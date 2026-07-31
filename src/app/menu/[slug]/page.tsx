@@ -70,7 +70,9 @@ const validArtwork = [
 function isDrinkArtwork(
   value: string,
 ): value is DrinkArtwork {
-  return validArtwork.includes(value as DrinkArtwork);
+  return (validArtwork as readonly string[]).includes(
+    value,
+  );
 }
 
 function getCategoryName(
