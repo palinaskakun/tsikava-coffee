@@ -3619,3 +3619,501 @@ button {
     transform: scale(1) rotate(0);
   }
 }
+
+
+/* =========================================
+   Homepage redesign
+   ========================================= */
+
+.home-page {
+  --coffee-deep: #2b1713;
+  --coffee: #43261f;
+  --coffee-soft: #67443a;
+  --latte: #d8bd9f;
+  --oat: #efe1cf;
+  --matcha: #708866;
+  background: var(--coffee-deep);
+}
+
+/* Hero */
+
+.home-page .hero {
+  min-height: 760px;
+  color: var(--white);
+  background:
+    radial-gradient(
+      circle at 14% 18%,
+      rgba(141, 34, 49, 0.34),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 90% 72%,
+      rgba(49, 87, 200, 0.24),
+      transparent 30%
+    ),
+    linear-gradient(
+      120deg,
+      #24120f 0%,
+      #3a211b 52%,
+      #2a1713 100%
+    );
+}
+
+.home-page .hero::before {
+  opacity: 0.36;
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+  background-size: 34px 34px;
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 92%
+  );
+}
+
+.home-page .hero-content {
+  min-height: 735px;
+  padding-block: 78px;
+}
+
+.home-page .ambient-red {
+  top: -14%;
+  left: -12%;
+  background: rgba(141, 34, 49, 0.48);
+}
+
+.home-page .ambient-blue {
+  right: -10%;
+  bottom: -16%;
+  background: rgba(49, 87, 200, 0.3);
+}
+
+.home-page .ambient-matcha {
+  top: 12%;
+  right: 25%;
+  width: 260px;
+  height: 260px;
+  background: rgba(112, 136, 102, 0.2);
+  animation:
+    ambientFloat 17s ease-in-out 2s
+    infinite alternate;
+}
+
+.home-page .hero-copy h1 {
+  max-width: 690px;
+  font-size: clamp(
+    4.7rem,
+    8vw,
+    7.8rem
+  );
+  letter-spacing: -0.06em;
+}
+
+.home-page .hero-copy h1 span {
+  color: #d6aeb4;
+}
+
+.home-page .hero-description {
+  max-width: 570px;
+  color: rgba(255, 253, 249, 0.72);
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+/* Hero buttons */
+
+.home-page .hero .primary-button {
+  border-color: var(--oxblood);
+  background: var(--oxblood);
+  box-shadow:
+    0 16px 35px rgba(0, 0, 0, 0.22);
+}
+
+.home-page .hero .primary-button:hover {
+  border-color: #a62c3e;
+  background: #a62c3e;
+}
+
+.home-page .hero .secondary-button {
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+}
+
+.home-page .hero .secondary-button:hover {
+  border-color: rgba(255, 255, 255, 0.48);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Language note */
+
+.home-page .language-note {
+  max-width: 520px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 46px;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.home-page .language-note strong {
+  color: var(--cornflower-light);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+}
+
+.home-page .language-note span {
+  color: rgba(255, 253, 249, 0.58);
+  font-size: 0.8rem;
+}
+
+/* Hero illustration */
+
+.home-page .hero-art::before {
+  width: 430px;
+  height: 430px;
+  border-color: rgba(255, 255, 255, 0.13);
+}
+
+.home-page .hero-art::after {
+  width: 350px;
+  height: 350px;
+  border-color: rgba(139, 165, 241, 0.32);
+}
+
+.home-page .cup-shadow {
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.home-page .cup {
+  border-color: rgba(255, 255, 255, 0.24);
+  background:
+    linear-gradient(
+      135deg,
+      #fff9ef,
+      #d9c2aa
+    );
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.34),
+    inset -15px -18px 35px
+      rgba(94, 55, 43, 0.12);
+}
+
+.home-page .cup-rim {
+  border-color: #f0dfca;
+  background: #392018;
+}
+
+.home-page .cup-pattern {
+  border-block-color: #60131f;
+  background:
+    linear-gradient(
+      45deg,
+      transparent 44%,
+      rgba(255, 255, 255, 0.15) 44%,
+      rgba(255, 255, 255, 0.15) 52%,
+      transparent 52%
+    ),
+    var(--oxblood);
+}
+
+.home-page .flower {
+  color: var(--cornflower-light);
+  filter:
+    drop-shadow(
+      0 18px 30px
+      rgba(49, 87, 200, 0.28)
+    );
+}
+
+.home-page .flower-two {
+  color: #91a47f;
+}
+
+/* Name section */
+
+.home-page .meaning-section {
+  border-color: rgba(76, 43, 34, 0.2);
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.18),
+      transparent 45%
+    ),
+    var(--oat);
+}
+
+.home-page .meaning-grid {
+  min-height: 430px;
+}
+
+.home-page .meaning-label {
+  color: var(--cornflower);
+}
+
+.home-page .meaning-copy h2 {
+  color: #2b1b17;
+}
+
+.home-page .meaning-copy h2 em {
+  color: var(--oxblood);
+}
+
+.home-page .meaning-copy p {
+  color: #685750;
+}
+
+/* Featured drinks */
+
+.home-page .featured-section {
+  padding-block: 118px;
+  background:
+    radial-gradient(
+      circle at 82% 16%,
+      rgba(112, 136, 102, 0.17),
+      transparent 27%
+    ),
+    linear-gradient(
+      180deg,
+      #3a211b 0%,
+      #2d1915 100%
+    );
+}
+
+.home-page
+  .featured-section
+  .section-heading
+  h2 {
+  color: var(--white);
+}
+
+.home-page .featured-intro {
+  margin: 0 0 14px;
+  color: #bdc8ff;
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+.home-page
+  .featured-section
+  .section-link {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: var(--white);
+}
+
+.home-page
+  .featured-section
+  .drink-card {
+  height: 100%;
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(
+      150deg,
+      #fffaf3,
+      #ead9c5
+    );
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.2);
+}
+
+.home-page
+  .featured-section
+  .drink-illustration {
+  background:
+    radial-gradient(
+      circle at 22% 20%,
+      color-mix(
+        in srgb,
+        var(--drink-secondary) 29%,
+        transparent
+      ),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 82% 75%,
+      color-mix(
+        in srgb,
+        var(--drink-primary) 20%,
+        transparent
+      ),
+      transparent 35%
+    ),
+    #e8d5be;
+}
+
+/*
+  Hide the emoji-like decoration on homepage
+  cards without changing the menu page yet.
+*/
+
+.home-page
+  .featured-section
+  .illustration-sparkle,
+.home-page
+  .featured-section
+  .illustration-flower {
+  display: none;
+}
+
+/*
+  Preserve the existing Belarusian section
+  without adding a cream gap above it.
+*/
+
+.home-page .culture-banner {
+  margin-top: 0;
+}
+
+/* Scroll reveal */
+
+.scroll-reveal {
+  opacity: 0;
+  transform:
+    translate3d(0, 28px, 0);
+  transition:
+    opacity 760ms
+      cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 760ms
+      cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-delay-1 {
+  transition-delay: 100ms;
+}
+
+.scroll-reveal-delay-2 {
+  transition-delay: 200ms;
+}
+
+.scroll-reveal-delay-3 {
+  transition-delay: 300ms;
+}
+
+.scroll-reveal[data-visible="true"] {
+  opacity: 1;
+  transform:
+    translate3d(0, 0, 0);
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+  .home-page .hero-content {
+    padding-top: 88px;
+  }
+
+  .home-page .hero-art {
+    min-height: 480px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 680px) {
+  .home-page .hero-content {
+    padding-block: 70px 42px;
+  }
+
+  .home-page .hero-copy h1 {
+    font-size: clamp(
+      4rem,
+      18vw,
+      5.8rem
+    );
+  }
+
+  .home-page .language-note {
+    margin-top: 38px;
+  }
+
+  .home-page .hero-art {
+    min-height: 390px;
+  }
+
+  .home-page .meaning-grid {
+    min-height: auto;
+  }
+
+  .home-page .featured-section {
+    padding-block: 82px;
+  }
+}
+
+/* Accessibility */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* =========================================
+   Red header
+   ========================================= */
+
+.site-header-stack {
+  position: relative;
+  top: auto;
+  z-index: 100;
+  background: var(--oxblood);
+}
+
+.pattern-strip {
+  height: 25px;
+  border-bottom-color: rgba(255, 255, 255, 0.32);
+  background-color: var(--oxblood);
+}
+
+.site-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  background: var(--oxblood);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.site-nav {
+  min-height: 96px;
+}
+
+.site-header .wordmark,
+.site-header .nav-links a,
+.site-header .header-cart-link {
+  color: var(--white);
+}
+
+.site-header .wordmark span {
+  color: var(--white);
+}
+
+.site-header .nav-links a::after {
+  background: var(--white);
+}
+
+.site-header .header-cart-link {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.site-header .header-cart-link:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.site-header .cart-count {
+  background: var(--white);
+  color: var(--oxblood);
+}

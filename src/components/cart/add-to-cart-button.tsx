@@ -29,8 +29,9 @@ export function AddToCartButton({
       productId: product.id,
       slug: product.slug,
       name: product.name,
-      price: product.price,
+      basePrice: product.price,
       artwork: product.artwork,
+      selectedOptions: [],
     });
 
     setAdded(true);

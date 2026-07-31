@@ -1,6 +1,10 @@
 import Link from "next/link";
-import { ArrowRight, Flower2, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Flower2,
+} from "lucide-react";
 import { DrinkCard } from "@/components/menu/drink-card";
+import { Reveal } from "@/components/motion/reveal";
 
 const featuredDrinks = [
   {
@@ -40,62 +44,92 @@ const featuredDrinks = [
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="home-page">
       <section className="hero">
-        <div className="hero-ambient ambient-red" aria-hidden="true" />
-        <div className="hero-ambient ambient-blue" aria-hidden="true" />
+        <div
+          className="hero-ambient ambient-red"
+          aria-hidden="true"
+        />
+
+        <div
+          className="hero-ambient ambient-blue"
+          aria-hidden="true"
+        />
+
+        <div
+          className="hero-ambient ambient-matcha"
+          aria-hidden="true"
+        />
 
         <div className="hero-content page-shell">
-          <div className="hero-copy">
-            <p className="eyebrow">
-              <Sparkles size={16} />
-              Coffee and tea, made curious
-            </p>
-
+          <Reveal className="hero-copy">
             <h1>
               It means
               <span> interesting.</span>
             </h1>
 
             <p className="hero-description">
-              TSIKAVA is a modern café concept shaped by Belarusian color,
-              pattern, and language — with a small menu of coffee and matcha
-              worth getting curious about.
+              TSIKAVA is a modern café concept shaped by
+              Belarusian color, pattern, and language,
+              with a small menu of coffee and matcha made
+              with care.
             </p>
 
             <div className="hero-actions">
-              <Link className="primary-button" href="/menu">
+              <Link
+                className="primary-button"
+                href="/menu"
+              >
                 Explore the menu
                 <ArrowRight size={18} />
               </Link>
 
-              <Link className="secondary-button" href="/about">
+              <Link
+                className="secondary-button"
+                href="/about"
+              >
                 Why TSIKAVA?
               </Link>
             </div>
 
             <div className="language-note">
-              <div>
-                <strong>ЦІКАВА · КАВА · ГАРБАТА</strong>
-                <span>Interesting · Coffee · Tea</span>
-              </div>
+              <strong>
+                ЦІКАВА · КАВА · ГАРБАТА
+              </strong>
 
-              <p>Pronounced roughly: tsee-KAH-va</p>
+              <span>
+                Interesting · Coffee · Tea
+              </span>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="hero-art" aria-label="Decorative TSIKAVA coffee cup">
-            <div className="flower flower-one">
+          <Reveal
+            className="hero-art"
+            delay={1}
+          >
+            <div
+              className="flower flower-one"
+              aria-hidden="true"
+            >
               <Flower2 />
             </div>
 
-            <div className="flower flower-two">
+            <div
+              className="flower flower-two"
+              aria-hidden="true"
+            >
               <Flower2 />
             </div>
 
-            <div className="cup-shadow" />
+            <div
+              className="cup-shadow"
+              aria-hidden="true"
+            />
 
-            <div className="cup">
+            <div
+              className="cup"
+              aria-label="Decorative TSIKAVA coffee cup"
+            >
               <div className="cup-rim" />
               <div className="cup-liquid" />
 
@@ -110,76 +144,106 @@ export default function HomePage() {
                 <span>◆</span>
               </div>
             </div>
-
-            <p>цікавая кава</p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="meaning-section">
         <div className="page-shell meaning-grid">
-          <div className="meaning-label">
+          <Reveal className="meaning-label">
             <Flower2 size={22} />
             <span>The name</span>
-          </div>
+          </Reveal>
 
-          <div className="meaning-copy">
+          <Reveal
+            className="meaning-copy"
+            delay={1}
+          >
             <h2>
               TSIKAVA comes from the Belarusian word
               <em> цікава</em> — “interesting.”
             </h2>
 
             <p>
-              Inside the name is also <strong>kava</strong>, the Belarusian word
-              for coffee. It felt like the right name for a café where language,
-              design, and drinks all meet in one place.
+              Inside the name is also{" "}
+              <strong>kava</strong>, the Belarusian word
+              for coffee. It felt like the right name for
+              a café where language, design, and drinks
+              all meet in one place.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="featured-section page-shell">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">A small menu, made carefully</p>
-            <h2>Current favorites</h2>
+      <section className="featured-section">
+        <div className="page-shell">
+          <Reveal className="section-heading">
+            <div>
+              <p className="featured-intro">
+                Made carefully
+              </p>
+
+              <h2>Current favorites</h2>
+            </div>
+
+            <Link
+              className="section-link"
+              href="/menu"
+            >
+              See the full menu
+              <ArrowRight size={16} />
+            </Link>
+          </Reveal>
+
+          <div className="drink-grid">
+            {featuredDrinks.map(
+              (drink, index) => (
+                <Reveal
+                  key={drink.id}
+                  delay={
+                    (index + 1) as 1 | 2 | 3
+                  }
+                >
+                  <DrinkCard product={drink} />
+                </Reveal>
+              ),
+            )}
           </div>
-
-          <Link className="section-link" href="/menu">
-            See the full menu
-            <ArrowRight size={16} />
-          </Link>
-        </div>
-
-        <div className="drink-grid">
-          {featuredDrinks.map((drink) => (
-            <DrinkCard key={drink.id} product={drink} />
-          ))}
         </div>
       </section>
 
       <section className="culture-banner">
-        <div className="culture-decoration" aria-hidden="true">
-          ЦІКАВА · КАВА · ГАРБАТА · ЦІКАВА · КАВА · ГАРБАТА
+        <div
+          className="culture-decoration"
+          aria-hidden="true"
+        >
+          ЦІКАВА · КАВА · ГАРБАТА · ЦІКАВА · КАВА ·
+          ГАРБАТА
         </div>
 
-        <div className="page-shell culture-content">
-          <p className="culture-kicker">Modern, but rooted</p>
+        <Reveal className="page-shell culture-content">
+          <p className="culture-kicker">
+            Modern, but rooted
+          </p>
 
           <h2>
             Belarusian inspiration.
           </h2>
 
           <p>
-            Traditional geometry, cornflower blue, deep red, and warm café
-            textures appear through a contemporary visual system.
+            Traditional geometry, cornflower blue, deep
+            red, and warm café textures appear through a
+            contemporary visual system.
           </p>
 
-          <Link className="light-button" href="/about">
+          <Link
+            className="light-button"
+            href="/about"
+          >
             Read our story
             <ArrowRight size={18} />
           </Link>
-        </div>
+        </Reveal>
       </section>
     </main>
   );
