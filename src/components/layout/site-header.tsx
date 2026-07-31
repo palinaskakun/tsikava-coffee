@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HeaderCartLink } from "@/components/cart/header-cart-link";
+import { createClient } from "@/lib/supabase/server";
 
 const navigation = [
   {
@@ -12,7 +13,39 @@ const navigation = [
   },
 ];
 
-export function SiteHeader() {
+async function getIsAuthenticated() {
+  try {
+    const supabase = await createClient();
+
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser();
+
+    if (error) {
+      console.error(
+        "Unable to read the current user in the header:",
+        error.message,
+      );
+
+      return false;
+    }
+
+    return Boolean(user);
+  } catch (error) {
+    console.error(
+      "Unable to initialize authentication in the header:",
+      error,
+    );
+
+    return false;
+  }
+}
+
+export async function SiteHeader() {
+  const isAuthenticated =
+    await getIsAuthenticated();
+
   return (
     <div className="site-header-stack">
       <div
@@ -43,8 +76,16 @@ export function SiteHeader() {
               </Link>
             ))}
 
-            <Link href="/auth/login">
-              Log in
+            <Link
+              href={
+                isAuthenticated
+                  ? "/account"
+                  : "/auth/login"
+              }
+            >
+              {isAuthenticated
+                ? "Account"
+                : "Log in"}
             </Link>
           </div>
 
