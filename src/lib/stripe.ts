@@ -1,14 +1,22 @@
 import Stripe from "stripe";
 
-const stripeSecretKey =
-  process.env.STRIPE_SECRET_KEY;
+let stripeClient: Stripe | null = null;
 
-if (!stripeSecretKey) {
-  throw new Error(
-    "Missing STRIPE_SECRET_KEY in .env.local.",
-  );
+export function getStripe(): Stripe {
+  const stripeSecretKey =
+    process.env.STRIPE_SECRET_KEY;
+
+  if (!stripeSecretKey) {
+    throw new Error(
+      "Missing STRIPE_SECRET_KEY. Add it to your environment variables.",
+    );
+  }
+
+  if (!stripeClient) {
+    stripeClient = new Stripe(
+      stripeSecretKey,
+    );
+  }
+
+  return stripeClient;
 }
-
-export const stripe = new Stripe(
-  stripeSecretKey,
-);
