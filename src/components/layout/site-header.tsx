@@ -14,10 +14,16 @@ const navigation = [
 ];
 
 export async function SiteHeader() {
-  const supabase = await createClient();
-  const { data } = await supabase.auth.getClaims();
+  let isAuthenticated = false;
 
-  const isAuthenticated = Boolean(data?.claims);
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase.auth.getClaims();
+
+    isAuthenticated = Boolean(data?.claims);
+  } catch (error) {
+    console.error("Could not load header auth state:", error);
+  }
 
   return (
     <div className="site-header-stack">

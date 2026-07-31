@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Fraunces } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  Manrope,
+} from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import "./globals.css";
 
-const bodyFont = Bricolage_Grotesque({
-  subsets: ["latin"],
+const bodyFont = Manrope({
+  subsets: ["latin", "cyrillic"],
   variable: "--font-body",
+  weight: ["300", "400", "500", "600"],
 });
 
-const displayFont = Fraunces({
-  subsets: ["latin"],
+const displayFont = Cormorant_Garamond({
+  subsets: ["latin", "cyrillic"],
   variable: "--font-display",
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {

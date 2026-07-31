@@ -1,8 +1,5 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  Flower2,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { DrinkCard } from "@/components/menu/drink-card";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -92,35 +89,13 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="language-note">
-              <strong>
-                ЦІКАВА · КАВА · ГАРБАТА
-              </strong>
-
-              <span>
-                Interesting · Coffee · Tea
-              </span>
-            </div>
+            
           </Reveal>
 
           <Reveal
             className="hero-art"
             delay={1}
           >
-            <div
-              className="flower flower-one"
-              aria-hidden="true"
-            >
-              <Flower2 />
-            </div>
-
-            <div
-              className="flower flower-two"
-              aria-hidden="true"
-            >
-              <Flower2 />
-            </div>
-
             <div
               className="cup-shadow"
               aria-hidden="true"
@@ -151,7 +126,6 @@ export default function HomePage() {
       <section className="meaning-section">
         <div className="page-shell meaning-grid">
           <Reveal className="meaning-label">
-            <Flower2 size={22} />
             <span>The name</span>
           </Reveal>
 
@@ -226,9 +200,7 @@ export default function HomePage() {
             Modern, but rooted
           </p>
 
-          <h2>
-            Belarusian inspiration.
-          </h2>
+          <h2>Belarusian inspiration.</h2>
 
           <p>
             Traditional geometry, cornflower blue, deep

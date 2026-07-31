@@ -25,7 +25,7 @@ const principles = [
     icon: Flower2,
     title: "Cornflower color",
     description:
-      "Cornflower blue introduces a softer cultural reference alongside white, black, and dark red.",
+      "Cornflower blue introduces a softer cultural reference alongside white and dark red.",
   },
 ];
 
@@ -97,7 +97,7 @@ export default function AboutPage() {
           <div className="section-heading">
             <div>
               <p className="eyebrow">The visual language</p>
-              <h2>Rooted, not costume-like</h2>
+              <h2>Rooted</h2>
             </div>
           </div>
 

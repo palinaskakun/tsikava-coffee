@@ -6,9 +6,9 @@ export const products: DrinkCardProduct[] = [
     name: "Cornflower Cloud",
     slug: "cornflower-cloud",
     description:
-      "Blueberry cold foam, vanilla matcha, and oat milk with a soft and sweet finish.",
+      "Blueberry syrup, oat milk, vanilla matcha, and blueberry cold foam over ice.",
     price: 6.5,
-    category: "Seasonal matcha",
+    category: "Summer matcha",
     artwork: "cornflower",
     featured: true,
   },
@@ -17,7 +17,7 @@ export const products: DrinkCardProduct[] = [
     name: "Cherry Kava",
     slug: "cherry-kava",
     description:
-      "Espresso, dark cherry, cocoa, and lightly sweet cream over ice.",
+      "Espresso, dark cherry, cocoa, and lightly sweet cream served over ice.",
     price: 6.25,
     category: "Signature latte",
     artwork: "cherry",
@@ -28,11 +28,42 @@ export const products: DrinkCardProduct[] = [
     name: "Honey Linen",
     slug: "honey-linen",
     description:
-      "Wildflower honey, espresso, sea salt, and silky steamed milk.",
+      "Wildflower honey, salted caramel, espresso, and silky milk.",
     price: 5.75,
     category: "Signature latte",
     artwork: "honey",
     featured: true,
+  },
+  {
+    id: "forest-berry-refresher",
+    name: "Forest Berry Refresher",
+    slug: "forest-berry-refresher",
+    description:
+      "Blackberry, blueberry, blackcurrant, lemon, and sparkling water.",
+    price: 5.95,
+    category: "Summer refresher",
+    artwork: "berry",
+    featured: true,
+  },
+  {
+    id: "kupalle-sunset",
+    name: "Kupalle Sunset",
+    slug: "kupalle-sunset",
+    description:
+      "Strawberry, raspberry, hibiscus, and lemonade with a bright citrus finish.",
+    price: 5.95,
+    category: "Summer refresher",
+    artwork: "kupalle",
+  },
+  {
+    id: "birch-morning",
+    name: "Birch Morning",
+    slug: "birch-morning",
+    description:
+      "Crisp apple, white peach, lemon, and sparkling birch water.",
+    price: 5.75,
+    category: "Sparkling refresher",
+    artwork: "birch",
   },
   {
     id: "strawberry-matcha",
