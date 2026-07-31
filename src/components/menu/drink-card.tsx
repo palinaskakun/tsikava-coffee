@@ -1,8 +1,5 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  ArrowUpRight,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import {
   DrinkIllustration,
   type DrinkArtwork,
@@ -23,27 +20,14 @@ type DrinkCardProps = {
   product: DrinkCardProduct;
 };
 
-function formatPrice(price: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(price);
-}
-
-export function DrinkCard({
-  product,
-}: DrinkCardProps) {
+export function DrinkCard({ product }: DrinkCardProps) {
   return (
-    <article
-      className={`drink-card drink-card-${product.artwork}`}
-    >
+    <article className={`drink-card drink-card-${product.artwork}`}>
       <div className="drink-card-topline">
         <p>{product.category}</p>
 
         {product.featured ? (
-          <span className="featured-pill">
-            Featured
-          </span>
+          <span className="featured-pill">Featured</span>
         ) : null}
       </div>
 
@@ -52,17 +36,13 @@ export function DrinkCard({
         className="drink-card-art-link"
         href={`/menu/${product.slug}`}
       >
-        <DrinkIllustration
-          artwork={product.artwork}
-        />
+        <DrinkIllustration artwork={product.artwork} />
       </Link>
 
       <div className="drink-card-copy">
         <div className="drink-card-title-row">
           <h3>
-            <Link href={`/menu/${product.slug}`}>
-              {product.name}
-            </Link>
+            <Link href={`/menu/${product.slug}`}>{product.name}</Link>
           </h3>
 
           <Link
@@ -74,20 +54,11 @@ export function DrinkCard({
           </Link>
         </div>
 
-        <p className="drink-description">
-          {product.description}
-        </p>
+        <p className="drink-description">{product.description}</p>
       </div>
 
       <div className="drink-card-footer">
-        <strong>
-          From {formatPrice(product.price)}
-        </strong>
-
-        <Link
-          className="add-button"
-          href={`/menu/${product.slug}`}
-        >
+        <Link className="add-button" href={`/menu/${product.slug}`}>
           Choose
           <ArrowRight size={16} />
         </Link>
