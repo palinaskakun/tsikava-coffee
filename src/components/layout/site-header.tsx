@@ -1,38 +1,70 @@
 import Link from "next/link";
-import { ShoppingBag } from "lucide-react";
+import { HeaderCartLink } from "@/components/cart/header-cart-link";
+import { createClient } from "@/lib/supabase/server";
 
 const navigation = [
-  { label: "Menu", href: "/menu" },
-  { label: "Our story", href: "/about" },
-  { label: "Account", href: "/account" },
+  {
+    label: "Menu",
+    href: "/menu",
+  },
+  {
+    label: "Our story",
+    href: "/about",
+  },
 ];
 
-export function SiteHeader() {
+export async function SiteHeader() {
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getClaims();
+
+  const isAuthenticated = Boolean(data?.claims);
+
   return (
-    <>
-      <div className="pattern-strip" aria-hidden="true" />
+    <div className="site-header-stack">
+      <div
+        aria-hidden="true"
+        className="pattern-strip"
+      />
 
       <header className="site-header">
-        <nav className="site-nav page-shell" aria-label="Main navigation">
-          <Link className="wordmark" href="/" aria-label="TSIKAVA homepage">
+        <nav
+          aria-label="Main navigation"
+          className="site-nav page-shell"
+        >
+          <Link
+            aria-label="TSIKAVA homepage"
+            className="wordmark"
+            href="/"
+          >
             TSIKAVA<span>!</span>
           </Link>
 
           <div className="nav-links">
             {navigation.map((item) => (
-              <Link href={item.href} key={item.href}>
+              <Link
+                href={item.href}
+                key={item.href}
+              >
                 {item.label}
               </Link>
             ))}
+
+            <Link
+              href={
+                isAuthenticated
+                  ? "/account"
+                  : "/auth/login"
+              }
+            >
+              {isAuthenticated
+                ? "Account"
+                : "Log in"}
+            </Link>
           </div>
 
-          <Link className="cart-button" href="/cart">
-            <ShoppingBag size={18} strokeWidth={2.2} />
-            <span className="cart-label">Cart</span>
-            <span className="cart-count">0</span>
-          </Link>
+          <HeaderCartLink />
         </nav>
       </header>
-    </>
+    </div>
   );
 }

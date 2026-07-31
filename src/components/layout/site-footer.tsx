@@ -19,7 +19,7 @@ export function SiteFooter() {
 
         <div className="footer-column">
           <p className="footer-heading">Visit</p>
-          <p>East Lansing, Michigan</p>
+          <p>Cool City, Cool State</p>
           <p>Monday–Sunday</p>
           <p>7:00 AM–7:00 PM</p>
         </div>

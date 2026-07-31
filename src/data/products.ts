@@ -6,7 +6,7 @@ export const products: DrinkCardProduct[] = [
     name: "Cornflower Cloud",
     slug: "cornflower-cloud",
     description:
-      "Blueberry cold foam, vanilla matcha, and oat milk with a soft floral finish.",
+      "Blueberry cold foam, vanilla matcha, and oat milk with a soft and sweet finish.",
     price: 6.5,
     category: "Seasonal matcha",
     artwork: "cornflower",

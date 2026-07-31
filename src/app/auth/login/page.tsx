@@ -1,52 +1,60 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { redirect } from "next/navigation";
+import { LoginForm } from "@/features/auth/login-form";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Log in",
 };
 
-export default function LoginPage() {
+type LoginPageProps = {
+  searchParams: Promise<{
+    error?: string;
+  }>;
+};
+
+export default async function LoginPage({
+  searchParams,
+}: LoginPageProps) {
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getClaims();
+
+  if (data?.claims) {
+    redirect("/account");
+  }
+
+  const parameters = await searchParams;
+
   return (
     <main className="auth-page">
       <section className="auth-card">
         <div className="auth-heading">
           <p className="eyebrow">Welcome back</p>
           <h1>Log in to TSIKAVA.</h1>
+
           <p>
-            Authentication will be connected to Supabase in the next stage.
+            View your saved details, recent orders, and
+            favorite drinks.
           </p>
         </div>
 
-        <form className="auth-form">
-          <label>
-            Email address
-            <input
-              autoComplete="email"
-              name="email"
-              placeholder="you@example.com"
-              type="email"
-            />
-          </label>
+        {parameters.error ? (
+          <div
+            className="mt-7 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+            role="alert"
+          >
+            {parameters.error}
+          </div>
+        ) : null}
 
-          <label>
-            Password
-            <input
-              autoComplete="current-password"
-              name="password"
-              placeholder="Enter your password"
-              type="password"
-            />
-          </label>
-
-          <button className="primary-button form-button" type="button">
-            Log in
-            <ArrowRight size={18} />
-          </button>
-        </form>
+        <LoginForm />
 
         <p className="auth-switch">
-          New here? <Link href="/auth/register">Create an account</Link>
+          New here?{" "}
+          <Link href="/auth/register">
+            Create an account
+          </Link>
         </p>
       </section>
     </main>

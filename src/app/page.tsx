@@ -1,32 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Flower2, Sparkles } from "lucide-react";
-
-function DrinkCard({
-  product,
-}: {
-  product: {
-    id: string;
-    name: string;
-    slug: string;
-    description: string;
-    price: number;
-    category: string;
-    artwork: "cornflower" | "cherry" | "honey";
-    featured: boolean;
-  };
-}) {
-  return (
-    <Link className="drink-card" href={`/menu/${product.slug}`}>
-      <div className={`drink-artwork drink-artwork-${product.artwork}`} />
-      <div className="drink-card-copy">
-        <p className="drink-category">{product.category}</p>
-        <h3>{product.name}</h3>
-        <p>{product.description}</p>
-        <span>${product.price.toFixed(2)}</span>
-      </div>
-    </Link>
-  );
-}
+import { DrinkCard } from "@/components/menu/drink-card";
 
 const featuredDrinks = [
   {
@@ -34,7 +8,7 @@ const featuredDrinks = [
     name: "Cornflower Cloud",
     slug: "cornflower-cloud",
     description:
-      "Blueberry cold foam, vanilla matcha, and oat milk with a soft floral finish.",
+      "Blueberry cold foam, vanilla matcha, and oat milk with a soft and sweet finish.",
     price: 6.5,
     category: "Seasonal matcha",
     artwork: "cornflower" as const,
@@ -193,8 +167,7 @@ export default function HomePage() {
           <p className="culture-kicker">Modern, but rooted</p>
 
           <h2>
-            Belarusian inspiration without turning the café into a history
-            exhibit.
+            Belarusian inspiration.
           </h2>
 
           <p>

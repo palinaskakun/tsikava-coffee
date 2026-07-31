@@ -1,6 +1,12 @@
 import Link from "next/link";
-import { ArrowUpRight, Plus } from "lucide-react";
-import { DrinkIllustration, type DrinkArtwork } from "./drink-illustration";
+import {
+  ArrowRight,
+  ArrowUpRight,
+} from "lucide-react";
+import {
+  DrinkIllustration,
+  type DrinkArtwork,
+} from "@/components/menu/drink-illustration";
 
 export type DrinkCardProduct = {
   id: string;
@@ -24,50 +30,67 @@ function formatPrice(price: number) {
   }).format(price);
 }
 
-export function DrinkCard({ product }: DrinkCardProps) {
+export function DrinkCard({
+  product,
+}: DrinkCardProps) {
   return (
-    <article className={`drink-card drink-card-${product.artwork}`}>
+    <article
+      className={`drink-card drink-card-${product.artwork}`}
+    >
       <div className="drink-card-topline">
         <p>{product.category}</p>
 
         {product.featured ? (
-          <span className="featured-pill">Featured</span>
+          <span className="featured-pill">
+            Featured
+          </span>
         ) : null}
       </div>
 
       <Link
+        aria-label={`View ${product.name}`}
         className="drink-card-art-link"
         href={`/menu/${product.slug}`}
-        aria-label={`View ${product.name}`}
       >
-        <DrinkIllustration artwork={product.artwork} />
+        <DrinkIllustration
+          artwork={product.artwork}
+        />
       </Link>
 
       <div className="drink-card-copy">
         <div className="drink-card-title-row">
           <h3>
-            <Link href={`/menu/${product.slug}`}>{product.name}</Link>
+            <Link href={`/menu/${product.slug}`}>
+              {product.name}
+            </Link>
           </h3>
 
           <Link
+            aria-label={`Open ${product.name}`}
             className="round-icon-link"
             href={`/menu/${product.slug}`}
-            aria-label={`Open ${product.name}`}
           >
             <ArrowUpRight size={18} />
           </Link>
         </div>
 
-        <p className="drink-description">{product.description}</p>
+        <p className="drink-description">
+          {product.description}
+        </p>
       </div>
 
       <div className="drink-card-footer">
-        <strong>{formatPrice(product.price)}</strong>
+        <strong>
+          From {formatPrice(product.price)}
+        </strong>
 
-        <button className="add-button" type="button">
-          <Plus size={17} />
-          Add
-        </button>
+        <Link
+          className="add-button"
+          href={`/menu/${product.slug}`}
+        >
+          Choose
+          <ArrowRight size={16} />
+        </Link>
       </div>
     </article>
   );

@@ -14,24 +14,28 @@ export async function createClient() {
     );
   }
 
-  return createServerClient(supabaseUrl, supabasePublishableKey, {
-    cookies: {
-      getAll() {
-        return cookieStore.getAll();
-      },
+  return createServerClient(
+    supabaseUrl,
+    supabasePublishableKey,
+    {
+      cookies: {
+        getAll() {
+          return cookieStore.getAll();
+        },
 
-      setAll(cookiesToSet) {
-        try {
-          cookiesToSet.forEach(({ name, value, options }) => {
-            cookieStore.set(name, value, options);
-          });
-        } catch {
-          /*
-           * Server Components cannot always modify cookies.
-           * Authentication middleware will handle refreshing sessions later.
-           */
-        }
+        setAll(cookiesToSet) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) => {
+              cookieStore.set(name, value, options);
+            });
+          } catch {
+            /*
+             * Server Components cannot always write cookies.
+             * The root proxy handles session refreshes.
+             */
+          }
+        },
       },
     },
-  });
+  );
 }
