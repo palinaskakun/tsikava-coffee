@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { HeaderCartLink } from "@/components/cart/header-cart-link";
-import { createClient } from "@/lib/supabase/server";
 
 const navigation = [
   {
@@ -8,41 +7,12 @@ const navigation = [
     href: "/menu",
   },
   {
-    label: "About",
+    label: "Our story",
     href: "/about",
   },
 ];
 
-async function getAuthenticationStatus() {
-  try {
-    const supabase = await createClient();
-    const { data, error } =
-      await supabase.auth.getClaims();
-
-    if (error) {
-      console.error(
-        "Unable to read authentication claims:",
-        error.message,
-      );
-
-      return false;
-    }
-
-    return Boolean(data?.claims);
-  } catch (error) {
-    console.error(
-      "Unable to initialize Supabase in SiteHeader:",
-      error,
-    );
-
-    return false;
-  }
-}
-
-export async function SiteHeader() {
-  const isAuthenticated =
-    await getAuthenticationStatus();
-
+export function SiteHeader() {
   return (
     <div className="site-header-stack">
       <div
@@ -73,16 +43,8 @@ export async function SiteHeader() {
               </Link>
             ))}
 
-            <Link
-              href={
-                isAuthenticated
-                  ? "/account"
-                  : "/auth/login"
-              }
-            >
-              {isAuthenticated
-                ? "Account"
-                : "Log in"}
+            <Link href="/auth/login">
+              Log in
             </Link>
           </div>
 
