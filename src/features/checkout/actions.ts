@@ -3,7 +3,7 @@
 import { z } from "zod";
 import type { CheckoutState } from "@/features/checkout/checkout-state";
 import { createClient } from "@/lib/supabase/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 
 const cartItemSchema = z.object({
   slug: z
@@ -75,6 +75,8 @@ export async function placeOrderAction(
   _previousState: CheckoutState,
   formData: FormData,
 ): Promise<CheckoutState> {
+  const stripe = getStripe();
+
   let parsedCart: unknown;
 
   try {

@@ -1,6 +1,6 @@
 import type Stripe from "stripe";
 import { NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export const runtime = "nodejs";
@@ -8,6 +8,8 @@ export const runtime = "nodejs";
 export async function POST(
   request: Request,
 ) {
+  const stripe = getStripe();
+
   const webhookSecret =
     process.env.STRIPE_WEBHOOK_SECRET;
 
