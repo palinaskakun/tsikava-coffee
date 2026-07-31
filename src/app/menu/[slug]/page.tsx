@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeft,
-  Coffee,
-  Flower2,
-  Sparkles,
-} from "lucide-react";
+import { ArrowLeft, Coffee, Flower2, Sparkles } from "lucide-react";
 import {
   DrinkIllustration,
   type DrinkArtwork,
@@ -67,17 +62,11 @@ const validArtwork = [
   "classic",
 ] as const;
 
-function isDrinkArtwork(
-  value: string,
-): value is DrinkArtwork {
-  return (validArtwork as readonly string[]).includes(
-    value,
-  );
+function isDrinkArtwork(value: string): value is DrinkArtwork {
+  return (validArtwork as readonly string[]).includes(value);
 }
 
-function getCategoryName(
-  categories: ProductRow["categories"],
-) {
+function getCategoryName(categories: ProductRow["categories"]) {
   if (!categories) {
     return "TSIKAVA drink";
   }
@@ -152,9 +141,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({
-  params,
-}: ProductPageProps) {
+export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
   const product = await getProduct(slug);
 
@@ -162,19 +149,12 @@ export default async function ProductPage({
     notFound();
   }
 
-  const artwork: DrinkArtwork = isDrinkArtwork(
-    product.artwork,
-  )
+  const artwork: DrinkArtwork = isDrinkArtwork(product.artwork)
     ? product.artwork
     : "classic";
 
-  const optionGroups: ProductOptionGroup[] = (
-    product.option_groups ?? []
-  )
-    .sort(
-      (first, second) =>
-        first.display_order - second.display_order,
-    )
+  const optionGroups: ProductOptionGroup[] = (product.option_groups ?? [])
+    .sort((first, second) => first.display_order - second.display_order)
     .map((group) => ({
       id: group.id,
       name: group.name,
@@ -183,16 +163,11 @@ export default async function ProductPage({
       minSelections: group.min_selections,
       maxSelections: group.max_selections,
       options: [...group.product_options]
-        .sort(
-          (first, second) =>
-            first.display_order - second.display_order,
-        )
+        .sort((first, second) => first.display_order - second.display_order)
         .map((option) => ({
           id: option.id,
           name: option.name,
-          additionalPrice: Number(
-            option.additional_price,
-          ),
+          additionalPrice: Number(option.additional_price),
         })),
     }));
 
@@ -209,10 +184,7 @@ export default async function ProductPage({
         <div className="product-detail-art">
           <DrinkIllustration artwork={artwork} />
 
-          <div
-            className="product-detail-art-label"
-            aria-hidden="true"
-          >
+          <div className="product-detail-art-label" aria-hidden="true">
             ЦІКАВА · КАВА
           </div>
         </div>
@@ -225,9 +197,7 @@ export default async function ProductPage({
 
           <h1>{product.name}</h1>
 
-          <p className="product-detail-description">
-            {product.description}
-          </p>
+          <p className="product-detail-description">{product.description}</p>
 
           <div className="product-detail-notes">
             <div>
@@ -235,9 +205,7 @@ export default async function ProductPage({
 
               <span>
                 <strong>TSIKAVA original</strong>
-                <small>
-                  Created for this café concept
-                </small>
+                <small>Created for this café concept</small>
               </span>
             </div>
 
@@ -246,18 +214,14 @@ export default async function ProductPage({
 
               <span>
                 <strong>Made to order</strong>
-                <small>
-                  Choose size, milk, temperature, and extras
-                </small>
+                <small>Choose size, milk, temperature, and extras</small>
               </span>
             </div>
           </div>
 
           <div className="product-detail-base-price">
             <span>Starting at</span>
-            <strong>
-              ${Number(product.base_price).toFixed(2)}
-            </strong>
+            <strong>${Number(product.base_price).toFixed(2)}</strong>
           </div>
 
           <ProductCustomizer
