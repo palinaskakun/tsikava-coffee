@@ -2,42 +2,121 @@
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 64 64"
   role="img"
-  aria-label="TSIKAVA cornflower"
+  aria-label="TSIKAVA coffee cup"
 >
-  <rect width="64" height="64" rx="16" fill="#fffaf3" />
 
-  <g transform="translate(32 32)">
-    <g fill="#3157c8">
-      <path d="M0-27 5-14 0-9-5-14Z" />
-      <path d="m19-19-6 13-7-1-1-7Z" />
-      <path d="m27 0-13 5-5-5 5-5Z" />
-      <path d="m19 19-13-6 1-7 7-1Z" />
-      <path d="M0 27-5 14 0 9l5 5Z" />
-      <path d="m-19 19 6-13 7 1 1 7Z" />
-      <path d="m-27 0 13-5 5 5-5 5Z" />
-      <path d="m-19-19 13 6-1 7-7 1Z" />
+
+  <g transform="rotate(-4 32 32)">
+    <ellipse
+      cx="32"
+      cy="54"
+      rx="17"
+      ry="3.5"
+      fill="#2F201B"
+      opacity="0.13"
+    />
+
+    <path
+      d="M16 18
+         C16 14 20 12 32 12
+         C44 12 48 14 48 18
+         L46 46
+         C45.5 53 41 57 32 57
+         C23 57 18.5 53 18 46
+         Z"
+      fill="#F2EAE0"
+      stroke="#D8CEC3"
+      stroke-width="1"
+    />
+
+    <ellipse
+      cx="32"
+      cy="18"
+      rx="16"
+      ry="5"
+      fill="#FFF9F1"
+      stroke="#E5D9CE"
+      stroke-width="1.5"
+    />
+
+    <ellipse
+      cx="32"
+      cy="18"
+      rx="13.5"
+      ry="3.4"
+      fill="#704536"
+    />
+
+    <ellipse
+      cx="29"
+      cy="17.2"
+      rx="1.6"
+      ry="1.8"
+      fill="#C98F75"
+    />
+
+    <rect
+      x="17.2"
+      y="29"
+      width="29.6"
+      height="12"
+      fill="#8D2231"
+    />
+
+    <path
+      d="M18 31 L27 40
+         M23 29 L35 41
+         M31 29 L43 41
+         M39 29 L47 37"
+      stroke="#C85F70"
+      stroke-width="1.4"
+      opacity="0.8"
+    />
+
+    <path
+      d="M17.5 29 H46.5"
+      stroke="#681723"
+      stroke-width="2"
+    />
+
+    <path
+      d="M17.5 41 H46.5"
+      stroke="#681723"
+      stroke-width="2"
+    />
+
+    <g
+      fill="#FFFDF9"
+      stroke="#FFFDF9"
+      stroke-linejoin="round"
+    >
+      <path d="M24 35 L26.5 32.5 L29 35 L26.5 37.5 Z" />
+      <path
+        d="M31.5 35 L34 32.5 L36.5 35 L34 37.5 Z"
+        fill="none"
+        stroke-width="1.2"
+      />
+      <path d="M39 35 L41.5 32.5 L44 35 L41.5 37.5 Z" />
     </g>
 
-    <g fill="#7896eb" transform="rotate(22.5)">
-      <path d="M0-22 4-11 0-7l-4-4Z" />
-      <path d="m16-16-5 10-6-1-1-5Z" />
-      <path d="m22 0-11 4-4-4 4-4Z" />
-      <path d="m16 16-10-5 1-6 5-1Z" />
-      <path d="M0 22-4 11 0 7l4 4Z" />
-      <path d="m-16 16 5-10 6 1 1 5Z" />
-      <path d="m-22 0 11-4 4 4-4 4Z" />
-      <path d="m-16-16 10 5-1 6-5 1Z" />
-    </g>
+    <path
+      d="M27 10
+         C24 6 25 3 27 1"
+      fill="none"
+      stroke="#A9A19A"
+      stroke-width="1.6"
+      stroke-linecap="round"
+      opacity="0.7"
+    />
 
-    <circle r="8" fill="#861f2b" />
-    <circle r="4" fill="#fffaf3" />
-
-    <g fill="#171515">
-      <circle cx="0" cy="-5" r="1.3" />
-      <circle cx="4" cy="-2" r="1.3" />
-      <circle cx="3" cy="3" r="1.3" />
-      <circle cx="-3" cy="3" r="1.3" />
-      <circle cx="-4" cy="-2" r="1.3" />
-    </g>
+    <path
+      d="M36 10
+         C33 6 34 3 36 1"
+      fill="none"
+      stroke="#A9A19A"
+      stroke-width="1.6"
+      stroke-linecap="round"
+      opacity="0.7"
+    />
   </g>
 </svg>
