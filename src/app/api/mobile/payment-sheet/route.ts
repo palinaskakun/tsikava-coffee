@@ -82,29 +82,94 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    /*
-      Temporary amount for testing only.
+    // Create a pending order on the server so prices/tax are authoritative.
+    const pickupTime = new Date(
+      Date.now() + pickupMinutes * 60 * 1000,
+    ).toISOString();
 
-      Replace this with your real Supabase order creation logic so the
-      server calculates prices from the database instead of trusting iOS.
-    */
-    const amountInCents = 500;
+    const { data: orderId, error: orderError } =
+      await supabase.rpc("create_order", {
+        p_customer_name: customerName,
+        p_customer_email: customerEmail,
+        p_pickup_time: pickupTime,
+        p_customer_notes: customerNotes || null,
+        p_items: cart,
+      });
+
+    if (orderError || typeof orderId !== "string") {
+      console.error("Could not create pending order:", orderError);
+
+      return NextResponse.json(
+        { error: orderError?.message ?? "Could not create order." },
+        { status: 500 },
+      );
+    }
+
+    // Retrieve the created order (with computed unit prices and tax)
+    const { data: orderData, error: fetchError } = await supabase
+      .from("orders")
+      .select(
+        `
+          id,
+          customer_email,
+          tax,
+          order_items (
+            id,
+            product_name,
+            unit_price,
+            quantity,
+            selected_options
+          )
+        `,
+      )
+      .eq("id", orderId)
+      .single();
+
+    if (fetchError || !orderData) {
+      console.error("Could not retrieve order:", fetchError);
+
+      return NextResponse.json(
+        { error: "The order was created, but could not be retrieved." },
+        { status: 500 },
+      );
+    }
+
+    const order = orderData as {
+      id: string;
+      customer_email: string | null;
+      tax: number | string;
+      order_items: Array<{
+        unit_price: number | string;
+        quantity: number;
+      }> | null;
+    };
+
+    const items = order.order_items ?? [];
+
+    // Sum item totals from server-side unit_price * quantity
+    const itemsTotalInCents = items.reduce((sum, it) => {
+      const unit = Math.round(Number(it.unit_price) * 100);
+      const qty = Number(it.quantity) || 0;
+      return sum + unit * qty;
+    }, 0);
+
+    const taxInCents = Math.round(Number(order.tax || 0) * 100);
+
+    const amountInCents = itemsTotalInCents + taxInCents;
 
     const stripe = new Stripe(stripeSecretKey);
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amountInCents,
       currency: "usd",
-      automatic_payment_methods: {
-        enabled: true,
-      },
+      automatic_payment_methods: { enabled: true },
       receipt_email: customerEmail,
       metadata: {
         userId: userData.user.id,
+        orderId: order.id,
         customerName,
         pickupMinutes: String(pickupMinutes),
-        customerNotes:
-          typeof customerNotes === "string" ? customerNotes : "",
+        customerNotes: typeof customerNotes === "string" ? customerNotes : "",
       },
     });
 
