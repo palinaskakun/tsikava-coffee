@@ -82,6 +82,30 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Basic validation for cart items sent by mobile clients.
+    const invalidItem = Array.isArray(cart)
+      ? cart.find((it: any) => {
+          if (!it || typeof it !== "object") return true;
+          if (typeof it.slug !== "string" && typeof it.productId !== "string") return true;
+          if (typeof it.quantity !== "number" || it.quantity < 1) return true;
+          if (it.selectedOptions && !Array.isArray(it.selectedOptions)) return true;
+          return false;
+        })
+      : undefined;
+
+    if (invalidItem) {
+      return NextResponse.json(
+        { error: "Cart is malformed. Ensure each item has a slug/productId and quantity." },
+        { status: 400 },
+      );
+    }
+
+    console.info("Mobile checkout request", {
+      userId: userData.user.id,
+      itemsCount: cart.length,
+      pickupMinutes,
+    });
+
     // Create a pending order on the server so prices/tax are authoritative.
     const pickupTime = new Date(
       Date.now() + pickupMinutes * 60 * 1000,
@@ -157,6 +181,13 @@ export async function POST(request: NextRequest) {
 
     const amountInCents = itemsTotalInCents + taxInCents;
 
+    console.info("Computed authoritative amount (cents):", {
+      orderId: order.id,
+      itemsTotalInCents,
+      taxInCents,
+      amountInCents,
+    });
+
     const stripe = new Stripe(stripeSecretKey);
 
     const paymentIntent = await stripe.paymentIntents.create({
@@ -180,9 +211,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Return authoritative identifiers and amount so clients can confirm totals.
     return NextResponse.json({
       paymentIntentClientSecret: paymentIntent.client_secret,
-      orderId: paymentIntent.id,
+      orderId: order.id,
+      amountInCents,
     });
   } catch (error) {
     console.error("Mobile payment route error:", error);
