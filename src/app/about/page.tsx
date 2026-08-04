@@ -76,18 +76,14 @@ export default function AboutPage() {
         <div className="story-text">
           <p className="section-number">01 · The idea</p>
 
-          <h2>Cultural influence without copying the past.</h2>
+          <h2>Honoring heritage in a modern way.</h2>
 
           <p>
-            The concept is not meant to recreate traditional clothing or turn
-            cultural references into decoration without context. Instead, it
-            borrows structure: repeated geometry, strong contrast, careful
-            craftsmanship, and recognizable color.
+            We wanted to celebrate Belarusian culture without just copying what came before. Instead of slapping patterns on everything, we focused on the principles: bold geometry, striking contrast, attention to detail, and color that means something.
           </p>
 
           <p>
-            Those ideas become a clean digital system that can live on a
-            website, mobile application, cup sleeve, menu, or storefront.
+            These principles shape everything—from our website and app to the cup you hold in your hands and the space where you sit.
           </p>
         </div>
       </section>
