@@ -61,6 +61,9 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
 
+    // Debug: log incoming payload to help diagnose missing option errors
+    console.debug("[mobile/payment-sheet] incoming body:", JSON.stringify(body));
+
     const {
       customerName,
       customerEmail,
