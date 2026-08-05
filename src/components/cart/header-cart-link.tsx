@@ -18,7 +18,9 @@ export function HeaderCartLink() {
   );
 
   const [hydrated, setHydrated] =
-    useState(false);
+    useState(() =>
+      useCartStore.persist.hasHydrated(),
+    );
 
   const [isBumping, setIsBumping] =
     useState(false);
@@ -26,10 +28,17 @@ export function HeaderCartLink() {
   const [showConfirmation, setShowConfirmation] =
     useState(false);
 
-  const previousQuantity = useRef(0);
+  const previousQuantity = useRef<number | null>(null);
 
   useEffect(() => {
-    setHydrated(true);
+    if (useCartStore.persist.hasHydrated()) {
+      setHydrated(true);
+      return;
+    }
+
+    return useCartStore.persist.onFinishHydration(
+      () => setHydrated(true),
+    );
   }, []);
 
   const totalQuantity = hydrated
@@ -48,10 +57,13 @@ export function HeaderCartLink() {
     const previous =
       previousQuantity.current;
 
-    if (
-      totalQuantity > previous &&
-      previous >= 0
-    ) {
+    // Restoring persisted cart items after a refresh is not a new add.
+    if (previous === null) {
+      previousQuantity.current = totalQuantity;
+      return;
+    }
+
+    if (totalQuantity > previous) {
       setIsBumping(false);
       setShowConfirmation(false);
 

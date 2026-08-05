@@ -5428,6 +5428,70 @@ h4,
   }
 }
 
+/* The home hero keeps its actions compact on a phone, instead of turning the CTA into a banner. */
+@media (max-width: 680px) {
+  .home-page .hero-actions {
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .home-page .hero .menu-cta-button {
+    width: auto;
+    min-height: 46px;
+    padding-inline: 19px;
+  }
+
+  .home-page .hero .text-button {
+    font-size: 0.88rem;
+  }
+}
+
+/* On phones, the navigation is a single uninterrupted surface and its controls match the wordmark. */
+@media (max-width: 760px) {
+  .site-header {
+    border-bottom-color: transparent;
+  }
+
+  .site-header .cart-button,
+  .site-header .menu-trigger {
+    color: var(--oxblood);
+  }
+
+  body:has(.home-page) .site-header .cart-button,
+  body:has(.home-page) .site-header .menu-trigger {
+    color: var(--white);
+  }
+}
+
+/* On the home page the hero image runs continuously behind the transparent navigation. */
+body:has(.home-page) .site-header-stack {
+  position: absolute;
+  z-index: 20;
+  inset: 0 0 auto;
+  width: 100%;
+  background: transparent;
+}
+
+body:has(.home-page) .site-header,
+body:has(.home-page) .site-header .site-nav {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+body:has(.home-page) .hero {
+  min-height: 100svh;
+}
+
+body:has(.home-page) .hero-content {
+  padding-top: 148px;
+}
+
+@media (max-width: 760px) {
+  body:has(.home-page) .hero-content {
+    padding-top: 150px;
+  }
+}
+
 /* The menu call-to-action has one recognisable, softly dimensional treatment everywhere. */
 .menu-cta-button {
   border-color: rgba(255, 229, 193, 0.72) !important;
@@ -7060,5 +7124,100 @@ body:has(.home-page) .site-header .header-account-link:hover {
   .belarus-outline-card {
     min-height: 270px;
     padding: 20px;
+  }
+}
+
+/* Final home-header layer: the photograph continues under the navigation itself. */
+body:has(.home-page) .site-header-stack {
+  position: absolute !important;
+  z-index: 20;
+  inset: 0 0 auto;
+  width: 100%;
+  background: transparent !important;
+}
+
+body:has(.home-page) .site-header,
+body:has(.home-page) .site-header .site-nav,
+body:has(.home-page) .site-header-stack {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+body:has(.home-page) .hero {
+  min-height: 100svh !important;
+}
+
+body:has(.home-page) .hero-content {
+  padding-top: 148px;
+}
+
+@media (max-width: 760px) {
+  body:has(.home-page) .site-header .cart-button,
+  body:has(.home-page) .site-header .menu-trigger {
+    color: #f0cfa8 !important;
+  }
+
+  .home-page .hero-content {
+    padding-top: 150px;
+  }
+
+  .home-page .hero-actions {
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .home-page .hero .menu-cta-button {
+    width: auto;
+    min-height: 46px;
+    padding-inline: 19px;
+  }
+}
+
+/* The first-screen actions are intentionally quiet, like a small line of navigation. */
+.home-page .hero-inline-actions {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 29px;
+}
+
+.home-page .hero-action-link,
+.home-page .hero-action-divider {
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.home-page .hero-action-link {
+  transition: color 180ms ease;
+}
+
+.home-page .hero-action-link:hover {
+  color: #f0cfa8;
+}
+
+.home-page .hero-action-divider {
+  color: rgba(255, 255, 255, 0.58);
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .home-page .hero-inline-actions {
+    align-items: center;
+    flex-direction: row;
+    gap: 9px;
+    margin-top: 24px;
+  }
+
+  .home-page .hero-action-link,
+  .home-page .hero-action-divider {
+    font-size: 0.7rem;
   }
 }

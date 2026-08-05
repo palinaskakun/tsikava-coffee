@@ -85,9 +85,10 @@ export default function HomePage() {
             <p className="home-kicker">Coffee, tea & curiosity</p>
             <h1>Come for the coffee. <span>Stay for the interesting.</span></h1>
             <p className="hero-description">TSIKAVA is a modern café shaped by thoughtful drinks, warm spaces, and the small rituals that turn an ordinary day into a good one.</p>
-            <div className="hero-actions">
-              <Link className="primary-button menu-cta-button" href="/menu">Explore the menu <ArrowRight size={17} /></Link>
-              <Link className="text-button" href="/locations">Find your cafe <MapPin size={16} /></Link>
+            <div className="hero-actions hero-inline-actions">
+              <Link className="hero-action-link" href="/menu">Explore the menu</Link>
+              <span aria-hidden="true" className="hero-action-divider">|</span>
+              <Link className="hero-action-link" href="/locations">Find your cafe</Link>
             </div>
           </Reveal>
 
