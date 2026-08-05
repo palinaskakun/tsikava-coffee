@@ -119,7 +119,7 @@ export default function HomePage() {
       <section className="intro-section">
         <div className="page-shell intro-grid">
           <Reveal className="intro-image">
-            <Image alt="A freshly made latte" fill sizes="(max-width: 760px) 100vw, 42vw" src="/images/tsikava-latte-art.jpg" />
+            <Image alt="Bright TSIKAVA cafe interior" fill sizes="(max-width: 760px) 100vw, 42vw" src="/images/tsikava-bright-cafe.jpg" />
           </Reveal>
           <Reveal className="intro-copy" delay={1}>
             <p className="section-label">The name</p>
