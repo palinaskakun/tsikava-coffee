@@ -101,7 +101,7 @@ export default function AboutPage() {
               Belarus is a landlocked country between Poland, Lithuania, Latvia, Russia, and Ukraine. Its compact, gently irregular outline sits at a crossroads of languages, landscapes, and long shared histories.
             </p>
             <p>
-              For TSIKAVA, that context is a starting point. We are not trying to recreate a place. We are carrying a few details from it into a new coffeehouse ritual.
+              For TSIKAVA, that context is a starting point. We are carrying a few details from it into a new coffeehouse ritual.
             </p>
           </Reveal>
 
