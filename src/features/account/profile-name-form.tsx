@@ -22,7 +22,7 @@ export function ProfileNameForm({ currentName }: ProfileNameFormProps) {
         <input defaultValue={currentName} name="fullName" required type="text" />
       </label>
 
-      <button className="primary-button" disabled={pending} type="submit">
+      <button className="primary-button menu-cta-button" disabled={pending} type="submit">
         {pending ? <LoaderCircle className="checkout-spinner" size={15} /> : <Pencil size={15} />}
         {pending ? "Saving..." : "Save name"}
       </button>

@@ -6403,6 +6403,7 @@ em {
 }
 
 .account-profile-badge {
+  display: none;
   background: rgba(255, 255, 255, 0.1);
   color: var(--white);
 }
@@ -6412,9 +6413,17 @@ em {
 }
 
 .account-profile-badge > span {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: rgba(240, 207, 168, 0.92);
   color: var(--espresso);
+}
+
+@media (max-width: 680px) {
+  .account-profile-badge {
+    display: flex;
+  }
 }
 
 .account-summary-card,
