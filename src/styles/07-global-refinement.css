@@ -249,6 +249,10 @@ em {
   line-height: 1.08;
 }
 
+.account-orders-heading h1 {
+  color: var(--espresso);
+}
+
 .menu-hero-content > p:last-child,
 .about-intro p,
 .account-dashboard-heading > div:first-child > p:last-child {
