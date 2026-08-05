@@ -375,17 +375,20 @@ body:has(.home-page) .site-header .header-account-link:hover {
   color: var(--oxblood);
 }
 
-/* Hero marquee repeats a content-width phrase instead of spacing text across the viewport. */
+/* Two identical content-width runs meet exactly at the loop boundary. */
 .hero-values-track {
   width: max-content;
+  gap: 0;
 }
 
 .hero-values-content {
   flex: 0 0 auto;
+  flex-wrap: nowrap;
   justify-content: flex-start;
   width: max-content;
   gap: clamp(14px, 1.4vw, 28px);
-  padding: 0 clamp(18px, 2vw, 34px);
+  padding: 0 clamp(14px, 1.4vw, 28px) 0 0;
+  white-space: nowrap;
 }
 
 .hero-values-content span,
@@ -395,7 +398,7 @@ body:has(.home-page) .site-header .header-account-link:hover {
 
 @keyframes heroValuesTicker {
   to {
-    transform: translateX(-16.666667%);
+    transform: translateX(-50%);
   }
 }
 
@@ -474,4 +477,3 @@ body:has(.home-page) .site-header .header-account-link:hover {
     padding: 20px;
   }
 }
-

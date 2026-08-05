@@ -30,10 +30,6 @@
     grid-template-columns: auto 1fr auto;
   }
 
-  .nav-links {
-    display: none;
-  }
-
   .hero-content,
   .about-hero-grid,
   .story-section,
@@ -1944,5 +1940,4 @@
     transform: scale(1) rotate(0);
   }
 }
-
 

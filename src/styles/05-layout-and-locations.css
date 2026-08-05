@@ -700,14 +700,13 @@
     display: block;
     max-height: 0;
     overflow: hidden;
-    border-top: 1px solid transparent;
+    border-top: 0;
     background: var(--oxblood);
-    transition: max-height 260ms ease, border-color 260ms ease;
+    transition: max-height 260ms ease;
   }
 
   .mobile-menu.is-open {
     max-height: 290px;
-    border-top-color: rgba(255, 255, 255, 0.22);
   }
 
   .mobile-menu-inner {
@@ -885,4 +884,3 @@ body:has(.home-page) .hero-content {
     transform: translateX(-50%);
   }
 }
-

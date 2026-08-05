@@ -100,7 +100,7 @@ export default function HomePage() {
 
         <div className="hero-values-bar" aria-label="What guides TSIKAVA">
           <div className="hero-values-track">
-            {Array.from({ length: 6 }, (_, copy) => (
+            {Array.from({ length: 2 }, (_, copy) => (
               <div className="hero-values-content" key={copy}>
                 <span>It means interesting</span>
                 <i aria-hidden="true">✦</i>
