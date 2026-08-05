@@ -12,21 +12,13 @@ async function getIsAuthenticated() {
     } = await supabase.auth.getUser();
 
     if (error) {
-      console.error(
-        "Unable to read the current user in the header:",
-        error.message,
-      );
-
+      // A stale refresh-token cookie simply means this visitor is signed out.
+      // Do not surface it as a server error from a shared layout component.
       return false;
     }
 
     return Boolean(user);
-  } catch (error) {
-    console.error(
-      "Unable to initialize authentication in the header:",
-      error,
-    );
-
+  } catch {
     return false;
   }
 }

@@ -1,0 +1,477 @@
+/* Homepage refinement: a single, calm opening moment. */
+.pattern-strip {
+  height: 20px;
+  background:
+    linear-gradient(45deg, transparent 38%, rgba(255, 250, 243, 0.92) 38% 47%, transparent 47% 53%, rgba(255, 250, 243, 0.92) 53% 62%, transparent 62%),
+    linear-gradient(-45deg, transparent 38%, rgba(255, 250, 243, 0.92) 38% 47%, transparent 47% 53%, rgba(255, 250, 243, 0.92) 53% 62%, transparent 62%),
+    var(--oxblood);
+  background-size: 30px 20px;
+}
+
+.site-nav {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: clamp(1rem, 3vw, 3rem);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  color: var(--espresso);
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(1.24rem, 1.75vw, 1.58rem);
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  line-height: 1;
+}
+
+.wordmark-mark {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  margin-right: 9px;
+  border: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.wordmark-mark::before,
+.wordmark-mark::after {
+  position: absolute;
+  inset: 3px;
+  border: 1px solid currentColor;
+  content: "";
+}
+
+.wordmark-mark::after {
+  inset: 6px;
+}
+
+.wordmark-name,
+.wordmark-bang {
+  color: inherit;
+}
+
+.wordmark-bang {
+  margin-left: 2px;
+  color: var(--oxblood);
+}
+
+.nav-start {
+  justify-content: center;
+}
+
+.nav-links a::after {
+  display: none;
+}
+
+.nav-links a:hover {
+  color: var(--oxblood);
+}
+
+.home-page .hero {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100svh - 79px);
+  background: #2d1b15;
+}
+
+.hero-background-photo {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.17;
+  filter: saturate(0.55) sepia(0.34) contrast(1.06);
+}
+
+.home-page .hero::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(45, 27, 21, 0.85) 0%, rgba(45, 27, 21, 0.55) 57%, rgba(45, 27, 21, 0.75) 100%);
+  content: "";
+}
+
+.home-page .hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 138px;
+}
+
+.hero-values-bar {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  background: rgba(240, 207, 168, 0.94);
+  color: var(--espresso);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.hero-values-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: clamp(0.75rem, 2.8vw, 3rem);
+  font-size: clamp(0.68rem, 0.85vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero-values-content i {
+  color: var(--oxblood);
+  font-size: 0.86rem;
+  font-style: normal;
+}
+
+body:has(.home-page) .site-header-stack,
+body:has(.home-page) .site-header,
+body:has(.home-page) .site-header .site-nav {
+  background: #2d1b15;
+}
+
+body:has(.home-page) .site-header .wordmark,
+body:has(.home-page) .site-header .wordmark-name,
+body:has(.home-page) .site-header .wordmark-bang {
+  color: var(--white);
+}
+
+body:has(.home-page) .site-header .wordmark-mark {
+  color: #f0cfa8;
+}
+
+body:has(.home-page) .site-header .nav-links a:hover,
+body:has(.home-page) .site-header .header-account-link:hover {
+  color: #f0cfa8;
+}
+
+.home-page .hero .primary-button {
+  background: #f0cfa8;
+  color: var(--espresso);
+  border-color: #f0cfa8;
+  box-shadow: 0 14px 28px rgba(15, 7, 4, 0.24);
+}
+
+.home-page .hero .primary-button:hover {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--espresso);
+}
+
+/* Two identical viewport-wide runs meet perfectly, so the loop has no blank beat. */
+.ticker-track {
+  width: 200vw;
+  gap: 0;
+}
+
+.ticker-content {
+  flex: 0 0 100vw;
+  justify-content: space-around;
+  width: 100vw;
+  gap: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+@media (max-width: 760px) {
+  .site-nav {
+    grid-template-columns: auto 1fr auto;
+    gap: 0.7rem;
+  }
+
+  .wordmark {
+    font-size: 1.04rem;
+    letter-spacing: 0.1em;
+  }
+
+  .wordmark-mark {
+    width: 13px;
+    height: 13px;
+    margin-right: 7px;
+  }
+
+  .nav-start {
+    justify-content: flex-end;
+  }
+
+  .home-page .hero-content {
+    padding-bottom: 126px;
+  }
+
+  .hero-values-bar {
+    min-height: 108px;
+  }
+
+  .hero-values-content {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.8rem;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 0.59rem;
+    white-space: normal;
+  }
+
+  .ticker-track {
+    width: max-content;
+  }
+
+  .ticker-content {
+    flex-basis: auto;
+    width: auto;
+    gap: 30px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+/* Cart and checkout keep the same cream CTA, despite their older page-specific styles. */
+.cart-page .primary-button,
+.checkout-page .primary-button,
+.checkout-submit-button,
+.customizer-add-button,
+.form-button {
+  border-color: rgba(240, 207, 168, 0.88) !important;
+  background: #f0cfa8 !important;
+  box-shadow: 0 14px 28px rgba(15, 7, 4, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.34) !important;
+  color: var(--espresso) !important;
+}
+
+.cart-page .primary-button:hover,
+.checkout-page .primary-button:hover,
+.checkout-submit-button:hover,
+.customizer-add-button:hover,
+.form-button:hover {
+  border-color: var(--white) !important;
+  background: var(--white) !important;
+  box-shadow: 0 18px 34px rgba(15, 7, 4, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.46) !important;
+  color: var(--espresso) !important;
+}
+
+.favorite-submit-button {
+  border-color: rgba(240, 207, 168, 0.88) !important;
+  background: #f0cfa8 !important;
+  box-shadow: 0 14px 28px rgba(15, 7, 4, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.34) !important;
+  color: var(--espresso) !important;
+}
+
+.favorite-submit-button:hover {
+  border-color: var(--white) !important;
+  background: var(--white) !important;
+  color: var(--espresso) !important;
+}
+
+/* Checkout is a compact account confirmation, not another oversized landing page. */
+.checkout-page {
+  padding-bottom: 78px;
+  background:
+    radial-gradient(circle at 90% 12%, rgba(151, 169, 222, 0.14), transparent 22%),
+    var(--surface);
+}
+
+.checkout-heading {
+  padding-top: 52px;
+  padding-bottom: 38px;
+}
+
+.checkout-heading h1 {
+  max-width: 560px;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(2.35rem, 4.2vw, 3.8rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+}
+
+.checkout-heading > p:last-child {
+  max-width: 480px;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.checkout-section-heading h2,
+.checkout-summary h2 {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.42rem;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.checkout-section-heading > span,
+.checkout-summary-label,
+.checkout-field > span {
+  font-weight: 500;
+}
+
+.checkout-field input[readonly] {
+  cursor: default;
+  border-color: rgba(43, 26, 21, 0.1);
+  background: rgba(241, 228, 210, 0.45);
+  color: rgba(43, 26, 21, 0.72);
+}
+
+.checkout-field input[readonly]:focus {
+  border-color: rgba(43, 26, 21, 0.1);
+  box-shadow: none;
+}
+
+.profile-name-form {
+  display: grid;
+  gap: 9px;
+  margin-top: 25px;
+  padding-top: 21px;
+  border-top: 1px solid rgba(43, 26, 21, 0.11);
+}
+
+.profile-name-form label {
+  display: grid;
+  gap: 7px;
+}
+
+.profile-name-form label > span {
+  color: var(--muted);
+  font-size: 0.71rem;
+  font-weight: 500;
+}
+
+.profile-name-form input {
+  min-height: 43px;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid rgba(43, 26, 21, 0.14);
+  border-radius: 10px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--espresso);
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.profile-name-form input:focus {
+  border-color: rgba(141, 34, 49, 0.45);
+  box-shadow: 0 0 0 3px rgba(141, 34, 49, 0.08);
+}
+
+.profile-name-form .primary-button {
+  min-height: 40px;
+  justify-content: center;
+  font-size: 0.7rem;
+}
+
+.profile-name-message {
+  margin: 2px 0 0;
+  color: #315f39;
+  font-size: 0.72rem;
+}
+
+.profile-name-message.error {
+  color: var(--oxblood);
+}
+
+/* Hero marquee repeats a content-width phrase instead of spacing text across the viewport. */
+.hero-values-track {
+  width: max-content;
+}
+
+.hero-values-content {
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  width: max-content;
+  gap: clamp(14px, 1.4vw, 28px);
+  padding: 0 clamp(18px, 2vw, 34px);
+}
+
+.hero-values-content span,
+.hero-values-content i {
+  flex: 0 0 auto;
+}
+
+@keyframes heroValuesTicker {
+  to {
+    transform: translateX(-16.666667%);
+  }
+}
+
+.belarus-context-section {
+  padding-block: 98px;
+  border-block: 1px solid rgba(43, 26, 21, 0.11);
+  background: linear-gradient(120deg, rgba(221, 229, 255, 0.38), rgba(255, 253, 249, 0.5));
+}
+
+.belarus-context-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.8fr);
+  gap: clamp(44px, 8vw, 120px);
+  align-items: center;
+}
+
+.belarus-context-copy h2 {
+  max-width: 540px;
+  margin: 13px 0 20px;
+  color: var(--espresso);
+  font-size: clamp(2.1rem, 3.8vw, 3.55rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+.belarus-context-copy > p:not(.eyebrow) {
+  max-width: 570px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+.belarus-context-copy > p + p {
+  margin-top: 16px;
+}
+
+.belarus-outline-card {
+  min-height: 330px;
+  display: grid;
+  place-items: center;
+  padding: 35px;
+  border: 1px solid rgba(43, 26, 21, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 253, 249, 0.72);
+  box-shadow: 0 14px 35px rgba(64, 37, 29, 0.07);
+}
+
+.belarus-outline {
+  width: min(100%, 420px);
+  height: auto;
+  display: block;
+}
+
+.belarus-outline-card > p {
+  margin: -3px 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .belarus-context-section {
+    padding-block: 70px;
+  }
+
+  .belarus-context-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .belarus-outline-card {
+    min-height: 270px;
+    padding: 20px;
+  }
+}
+

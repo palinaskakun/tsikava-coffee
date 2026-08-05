@@ -17,10 +17,10 @@ export function HeaderCartLink() {
     (state) => state.items,
   );
 
+  // Persist middleware does not expose its browser-storage API during the
+  // server render. Start unhydrated and read it only after mounting.
   const [hydrated, setHydrated] =
-    useState(() =>
-      useCartStore.persist.hasHydrated(),
-    );
+    useState(false);
 
   const [isBumping, setIsBumping] =
     useState(false);
@@ -31,12 +31,18 @@ export function HeaderCartLink() {
   const previousQuantity = useRef<number | null>(null);
 
   useEffect(() => {
-    if (useCartStore.persist.hasHydrated()) {
+    const cartPersist = useCartStore.persist;
+
+    if (!cartPersist) {
+      return;
+    }
+
+    if (cartPersist.hasHydrated()) {
       setHydrated(true);
       return;
     }
 
-    return useCartStore.persist.onFinishHydration(
+    return cartPersist.onFinishHydration(
       () => setHydrated(true),
     );
   }, []);

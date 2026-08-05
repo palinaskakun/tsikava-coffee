@@ -1,0 +1,208 @@
+/* Final home-header layer: the photograph continues under the navigation itself. */
+body:has(.home-page) .site-header-stack {
+  position: absolute !important;
+  z-index: 20;
+  inset: 0 0 auto;
+  width: 100%;
+  background: transparent !important;
+}
+
+body:has(.home-page) .site-header,
+body:has(.home-page) .site-header .site-nav,
+body:has(.home-page) .site-header-stack {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+body:has(.home-page) .hero {
+  min-height: 100svh !important;
+}
+
+body:has(.home-page) .hero-content {
+  padding-top: 148px;
+}
+
+@media (max-width: 760px) {
+  body:has(.home-page) .site-header .cart-button,
+  body:has(.home-page) .site-header .menu-trigger {
+    color: #f0cfa8 !important;
+  }
+
+  .home-page .hero-content {
+    padding-top: 150px;
+  }
+
+  .home-page .hero-actions {
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .home-page .hero .menu-cta-button {
+    width: auto;
+    min-height: 46px;
+    padding-inline: 19px;
+  }
+}
+
+/* The first-screen actions are intentionally quiet, like a small line of navigation. */
+.home-page .hero-inline-actions {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 29px;
+}
+
+.home-page .hero-action-link,
+.home-page .hero-action-divider {
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.home-page .hero-action-link {
+  transition: color 180ms ease;
+}
+
+.home-page .hero-action-link:hover {
+  color: #f0cfa8;
+}
+
+.home-page .hero-action-divider {
+  color: rgba(255, 255, 255, 0.58);
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .home-page .hero-inline-actions {
+    align-items: center;
+    flex-direction: row;
+    gap: 9px;
+    margin-top: 24px;
+  }
+
+  .home-page .hero-action-link,
+  .home-page .hero-action-divider {
+    font-size: 0.7rem;
+  }
+}
+
+/* About opens with the same continuous photo treatment as the home page. */
+body:has(.about-page) .site-header-stack {
+  position: absolute !important;
+  z-index: 20;
+  inset: 0 0 auto;
+  width: 100%;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body:has(.about-page) .site-header,
+body:has(.about-page) .site-header .site-nav {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+body:has(.about-page) .site-header .wordmark,
+body:has(.about-page) .site-header .wordmark-name,
+body:has(.about-page) .site-header .wordmark-bang,
+body:has(.about-page) .site-header .nav-links a,
+body:has(.about-page) .site-header .header-account-link,
+body:has(.about-page) .site-header .cart-button,
+body:has(.about-page) .site-header .menu-trigger {
+  color: var(--white);
+}
+
+body:has(.about-page) .site-header .wordmark-mark {
+  color: #f0cfa8;
+}
+
+body:has(.about-page) .site-header .cart-button {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body:has(.about-page) .site-header .cart-count {
+  background: #f0cfa8;
+  color: var(--espresso);
+}
+
+.about-page .about-hero {
+  min-height: 100svh;
+  padding-top: 148px;
+  border-bottom: 0;
+  background:
+    linear-gradient(90deg, rgba(45, 27, 21, 0.86) 0%, rgba(45, 27, 21, 0.58) 57%, rgba(45, 27, 21, 0.76) 100%),
+    url("/images/tsikava-cafe-interior.jpg") center / cover;
+}
+
+@media (max-width: 760px) {
+  body:has(.about-page) .site-header .cart-button,
+  body:has(.about-page) .site-header .menu-trigger {
+    color: #f0cfa8;
+  }
+
+  .about-page .about-hero {
+    padding-top: 150px;
+  }
+}
+
+/* A light, consistent route trail appears on every page after Home. */
+.route-breadcrumb {
+  position: absolute;
+  z-index: 10;
+  top: 111px;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #f0cfa8;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.route-breadcrumb a {
+  color: inherit;
+  transition: color 180ms ease;
+}
+
+.route-breadcrumb a:hover {
+  color: var(--white);
+}
+
+.route-breadcrumb-part {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.route-breadcrumb [aria-current="page"] {
+  color: inherit;
+}
+
+.location-feature-reveal:nth-child(even) .location-feature-image {
+  order: 2;
+}
+
+@media (max-width: 760px) {
+  .route-breadcrumb {
+    top: 102px;
+    font-size: 0.7rem;
+  }
+
+  .location-feature-reveal:nth-child(even) .location-feature-image {
+    order: initial;
+  }
+}
