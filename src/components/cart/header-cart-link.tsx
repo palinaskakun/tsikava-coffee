@@ -38,8 +38,16 @@ export function HeaderCartLink() {
     }
 
     if (cartPersist.hasHydrated()) {
-      setHydrated(true);
-      return;
+      const animationFrame =
+        window.requestAnimationFrame(() => {
+          setHydrated(true);
+        });
+
+      return () => {
+        window.cancelAnimationFrame(
+          animationFrame,
+        );
+      };
     }
 
     return cartPersist.onFinishHydration(
