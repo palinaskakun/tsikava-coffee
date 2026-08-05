@@ -153,11 +153,7 @@ const serializedCart = JSON.stringify(
 
         <h1>Finish your order.</h1>
 
-        <p>
-          This creates a real order in the
-          TSIKAVA database. No card will be
-          charged yet.
-        </p>
+
       </section>
 
       <section className="page-shell checkout-layout">
