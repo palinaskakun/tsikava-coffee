@@ -175,10 +175,10 @@ const serializedCart = JSON.stringify(
             <span>01</span>
 
             <div>
-              <h2>Customer details</h2>
+              <h2>Account details</h2>
               <p>
-                We will attach the order to your
-                account when you are logged in.
+                Your saved name and email are used for this order.
+                You can update your name in Account.
               </p>
             </div>
           </div>
@@ -207,7 +207,7 @@ const serializedCart = JSON.stringify(
               <input
                 defaultValue={defaultName}
                 name="customerName"
-                placeholder="Your name"
+                readOnly
                 required
                 type="text"
               />
@@ -230,7 +230,7 @@ const serializedCart = JSON.stringify(
               <input
                 defaultValue={defaultEmail}
                 name="customerEmail"
-                placeholder="you@example.com"
+                readOnly
                 required
                 type="email"
               />
@@ -269,7 +269,7 @@ const serializedCart = JSON.stringify(
             </span>
 
             <select
-              defaultValue="30"
+              defaultValue="15"
               name="pickupMinutes"
               required
             >

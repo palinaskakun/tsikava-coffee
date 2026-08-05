@@ -1,22 +1,13 @@
 import type { Metadata } from "next";
-import {
-  Cormorant_Garamond,
-  Manrope,
-} from "next/font/google";
+import { Poppins } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import "./globals.css";
 
-const bodyFont = Manrope({
-  subsets: ["latin", "cyrillic"],
+const bodyFont = Poppins({
+  subsets: ["latin"],
   variable: "--font-body",
   weight: ["300", "400", "500", "600"],
-});
-
-const displayFont = Cormorant_Garamond({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-display",
-  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${bodyFont.variable} ${displayFont.variable}`}
+      className={bodyFont.variable}
       lang="en"
     >
       <body>

@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { HeaderCartLink } from "@/components/cart/header-cart-link";
 
 const navigation = [
+  { label: "Home", href: "/" },
   { label: "Menu", href: "/menu" },
   { label: "Locations", href: "/locations" },
   { label: "Our story", href: "/about" },
@@ -25,6 +26,12 @@ export function SiteHeaderMenu({
   return (
     <header className="site-header">
       <nav aria-label="Main navigation" className="site-nav page-shell">
+        <Link aria-label="TSIKAVA homepage" className="wordmark" href="/">
+          <span aria-hidden="true" className="wordmark-mark" />
+          <span className="wordmark-name">TSIKAVA</span>
+          <span className="wordmark-bang">!</span>
+        </Link>
+
         <div className="nav-start">
           <button
             aria-controls="mobile-navigation"
@@ -45,10 +52,6 @@ export function SiteHeaderMenu({
             ))}
           </div>
         </div>
-
-        <Link aria-label="TSIKAVA homepage" className="wordmark" href="/">
-          TSIKAVA<span>!</span>
-        </Link>
 
         <div className="nav-end">
           <Link className="header-account-link" href={accountHref}>

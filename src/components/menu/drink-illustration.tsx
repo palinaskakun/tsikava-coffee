@@ -51,16 +51,16 @@ const drinkLabels: Record<
   },
   classic: {
     top: "КАВА",
-    bottom: "Daily",
+    bottom: "Coffee",
     note: "simple · familiar",
   },
   berry: {
     top: "ЯГАДЫ",
-    bottom: "Forest",
+    bottom: "Berries",
     note: "wild berry · sparkle",
   },
   kupalle: {
-    top: "КУПАЛЛЕ",
+    top: "ЗАХАД",
     bottom: "Sunset",
     note: "hibiscus · lemonade",
   },

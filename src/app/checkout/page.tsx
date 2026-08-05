@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { CheckoutForm } from "@/features/checkout/checkout-form";
 import { createClient } from "@/lib/supabase/server";
 
@@ -20,17 +21,19 @@ export default async function CheckoutPage() {
 
   const user = userData.user;
 
+  if (!user) {
+    redirect("/auth/login?next=/checkout");
+  }
+
   let profile: ProfileRow | null = null;
 
-  if (user) {
-    const { data } = await supabase
-      .from("profiles")
-      .select("full_name")
-      .eq("id", user.id)
-      .maybeSingle<ProfileRow>();
+  const { data } = await supabase
+    .from("profiles")
+    .select("full_name")
+    .eq("id", user.id)
+    .maybeSingle<ProfileRow>();
 
-    profile = data;
-  }
+  profile = data;
 
   const defaultName =
     profile?.full_name ??
@@ -39,13 +42,13 @@ export default async function CheckoutPage() {
       ? user.user_metadata.full_name
       : "");
 
-  const defaultEmail = user?.email ?? "";
+  const defaultEmail = user.email ?? "";
 
   return (
     <CheckoutForm
       defaultEmail={defaultEmail}
       defaultName={defaultName}
-      isAuthenticated={Boolean(user)}
+      isAuthenticated
     />
   );
 }

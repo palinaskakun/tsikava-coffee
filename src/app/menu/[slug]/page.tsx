@@ -60,6 +60,9 @@ const validArtwork = [
   "matcha",
   "mocha",
   "classic",
+  "berry",
+  "kupalle",
+  "birch",
 ] as const;
 
 function isDrinkArtwork(value: string): value is DrinkArtwork {

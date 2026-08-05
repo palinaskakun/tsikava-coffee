@@ -16,7 +16,9 @@ export function SiteFooter() {
       <div className="page-shell footer-grid">
         <div className="footer-brand">
           <Link className="footer-wordmark" href="/">
-            TSIKAVA<span>!</span>
+            <span aria-hidden="true" className="wordmark-mark" />
+            <span className="wordmark-name">TSIKAVA</span>
+            <span className="wordmark-bang">!</span>
           </Link>
 
           <p>Modern coffee, thoughtful rituals, and a little Belarusian curiosity in every cup.</p>

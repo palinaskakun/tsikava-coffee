@@ -3,11 +3,12 @@
 import {
   useEffect,
   useRef,
+  type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
 import clsx from "clsx";
 
-type RevealProps = {
+type RevealProps = ComponentPropsWithoutRef<"div"> & {
   children: ReactNode;
   className?: string;
   delay?: 0 | 1 | 2 | 3;
@@ -17,6 +18,7 @@ export function Reveal({
   children,
   className,
   delay = 0,
+  ...props
 }: RevealProps) {
   const elementRef = useRef<HTMLDivElement>(null);
 
@@ -37,8 +39,8 @@ export function Reveal({
         observer.unobserve(element);
       },
       {
-        threshold: 0.16,
-        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.02,
+        rootMargin: "0px 0px -2% 0px",
       },
     );
 
@@ -58,6 +60,7 @@ export function Reveal({
       )}
       data-visible="false"
       ref={elementRef}
+      {...props}
     >
       {children}
     </div>

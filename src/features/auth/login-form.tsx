@@ -5,7 +5,11 @@ import { loginAction } from "@/features/auth/actions";
 import { initialAuthState } from "@/features/auth/auth-state";
 import { SubmitButton } from "@/features/auth/submit-button";
 
-export function LoginForm() {
+type LoginFormProps = {
+  nextPath?: string;
+};
+
+export function LoginForm({ nextPath }: LoginFormProps) {
   const [state, formAction] = useActionState(
     loginAction,
     initialAuthState,
@@ -13,6 +17,10 @@ export function LoginForm() {
 
   return (
     <form action={formAction} className="auth-form">
+      {nextPath ? (
+        <input name="next" type="hidden" value={nextPath} />
+      ) : null}
+
       {state.message ? (
         <div
           className={

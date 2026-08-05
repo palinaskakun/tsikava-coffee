@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 type LoginPageProps = {
   searchParams: Promise<{
     error?: string;
+    next?: string;
   }>;
 };
 
@@ -25,6 +26,11 @@ export default async function LoginPage({
   }
 
   const parameters = await searchParams;
+  const nextPath =
+    parameters.next?.startsWith("/") &&
+    !parameters.next.startsWith("//")
+      ? parameters.next
+      : undefined;
 
   return (
     <main className="auth-page">
@@ -48,7 +54,7 @@ export default async function LoginPage({
           </div>
         ) : null}
 
-        <LoginForm />
+        <LoginForm nextPath={nextPath} />
 
         <p className="auth-switch">
           New here?{" "}

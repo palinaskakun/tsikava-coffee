@@ -66,7 +66,17 @@ export async function loginAction(
     };
   }
 
-  redirect("/account");
+  const requestedNext = String(
+    formData.get("next") ?? "",
+  );
+
+  const destination =
+    requestedNext.startsWith("/") &&
+    !requestedNext.startsWith("//")
+      ? requestedNext
+      : "/account";
+
+  redirect(destination);
 }
 
 export async function registerAction(

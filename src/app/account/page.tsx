@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { logoutAction } from "@/features/auth/actions";
 import { FavoriteDrinkForm } from "@/features/account/favorite-drink-form";
+import { ProfileNameForm } from "@/features/account/profile-name-form";
+import { Reveal } from "@/components/motion/reveal";
 import {
   OrderCard,
   type AccountOrder,
@@ -40,6 +42,7 @@ type ProfileRow = {
 type ProductOption = {
   id: string;
   name: string;
+  artwork: string;
 };
 
 function getFavoriteProduct(
@@ -92,7 +95,7 @@ export default async function AccountPage() {
 
     supabase
       .from("products")
-      .select("id, name")
+      .select("id, name, artwork")
       .eq("is_available", true)
       .order("name"),
 
@@ -184,7 +187,7 @@ export default async function AccountPage() {
   return (
     <main className="page-main account-dashboard-page">
       <section className="account-dashboard-hero">
-        <div className="page-shell account-dashboard-heading">
+        <Reveal className="page-shell account-dashboard-heading">
           <div>
             <p className="eyebrow">
               Your TSIKAVA account
@@ -206,11 +209,11 @@ export default async function AccountPage() {
               <p>{user.email}</p>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="page-shell account-dashboard-grid">
-        <div className="account-dashboard-main">
+        <Reveal className="account-dashboard-main">
           <div className="account-section-heading">
             <div>
               <p className="section-number">
@@ -286,9 +289,9 @@ export default async function AccountPage() {
             }
             products={products}
           />
-        </div>
+        </Reveal>
 
-        <aside className="account-dashboard-sidebar">
+        <Reveal className="account-dashboard-sidebar" delay={1}>
           <div className="account-summary-card">
             <div className="preview-header">
               <p>Your profile</p>
@@ -332,6 +335,8 @@ export default async function AccountPage() {
             <div className="preview-decoration">
               ЦІКАВА · КАВА · ГАРБАТА
             </div>
+
+            <ProfileNameForm currentName={displayName} />
           </div>
 
           <form action={logoutAction}>
@@ -343,7 +348,7 @@ export default async function AccountPage() {
               Log out
             </button>
           </form>
-        </aside>
+        </Reveal>
       </section>
     </main>
   );

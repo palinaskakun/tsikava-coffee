@@ -1,17 +1,22 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useMemo, useState } from "react";
 import {
   Check,
   Heart,
   LoaderCircle,
 } from "lucide-react";
+import {
+  DrinkIllustration,
+  type DrinkArtwork,
+} from "@/components/menu/drink-illustration";
 import { updateFavoriteDrinkAction } from "@/features/account/actions";
 import { initialFavoriteDrinkState } from "@/features/account/favorite-drink-state";
 
 type ProductOption = {
   id: string;
   name: string;
+  artwork: string;
 };
 
 type FavoriteDrinkFormProps = {
@@ -23,16 +28,33 @@ export function FavoriteDrinkForm({
   products,
   currentFavoriteId,
 }: FavoriteDrinkFormProps) {
+  const [selectedProductId, setSelectedProductId] = useState(
+    currentFavoriteId ?? "",
+  );
+
   const [state, formAction, pending] = useActionState(
     updateFavoriteDrinkAction,
     initialFavoriteDrinkState,
   );
+
+  const selectedProduct = useMemo(
+    () => products.find((product) => product.id === selectedProductId),
+    [products, selectedProductId],
+  );
+
+  const artwork: DrinkArtwork = isDrinkArtwork(selectedProduct?.artwork)
+    ? selectedProduct.artwork
+    : "cornflower";
 
   return (
     <form
       action={formAction}
       className="favorite-drink-form"
     >
+      <div className="favorite-art-preview" aria-hidden="true">
+        <DrinkIllustration artwork={artwork} compact />
+      </div>
+
       <div className="favorite-form-heading">
         <div className="favorite-form-icon">
           <Heart size={20} />
@@ -53,6 +75,7 @@ export function FavoriteDrinkForm({
         <select
           defaultValue={currentFavoriteId ?? ""}
           name="productId"
+          onChange={(event) => setSelectedProductId(event.target.value)}
           required
         >
           <option disabled value="">
@@ -105,4 +128,18 @@ export function FavoriteDrinkForm({
       ) : null}
     </form>
   );
+}
+
+function isDrinkArtwork(value: string | undefined): value is DrinkArtwork {
+  return [
+    "cornflower",
+    "cherry",
+    "honey",
+    "matcha",
+    "mocha",
+    "classic",
+    "berry",
+    "kupalle",
+    "birch",
+  ].includes(value ?? "");
 }

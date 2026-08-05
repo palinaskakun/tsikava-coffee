@@ -11,6 +11,7 @@ import {
   Trash2,
 } from "lucide-react";
 import { DrinkIllustration } from "@/components/menu/drink-illustration";
+import { Reveal } from "@/components/motion/reveal";
 import { useCartStore } from "@/stores/cart-store";
 
 function formatPrice(value: number) {
@@ -49,7 +50,7 @@ export function CartView() {
 
   if (!hydrated) {
     return (
-      <main className="page-main">
+      <main className="page-main cart-page">
         <section className="simple-page-section page-shell">
           <p className="text-sm text-neutral-600">
             Loading your cart...
@@ -61,7 +62,7 @@ export function CartView() {
 
   if (items.length === 0) {
     return (
-      <main className="page-main">
+      <main className="page-main cart-page">
         <section className="simple-page-section page-shell">
           <div className="empty-state">
             <div className="empty-state-icon">
@@ -96,9 +97,9 @@ export function CartView() {
   }
 
   return (
-    <main className="page-main">
+    <main className="page-main cart-page">
       <section className="page-shell py-16 md:py-24">
-        <div className="mb-10 flex flex-col gap-5 border-b border-black/10 pb-8 md:flex-row md:items-end md:justify-between">
+        <Reveal className="mb-10 flex flex-col gap-5 border-b border-black/10 pb-8 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="eyebrow">
               Your order
@@ -117,9 +118,9 @@ export function CartView() {
             <Trash2 size={16} />
             Clear cart
           </button>
-        </div>
+        </Reveal>
 
-        <div className="grid gap-10 lg:grid-cols-[1fr_380px]">
+        <Reveal className="grid gap-10 lg:grid-cols-[1fr_380px]" delay={1}>
           <div className="flex flex-col gap-4">
             {items.map((item) => (
               <article
@@ -284,7 +285,7 @@ export function CartView() {
               checkout.
             </p>
           </aside>
-        </div>
+        </Reveal>
       </section>
     </main>
   );

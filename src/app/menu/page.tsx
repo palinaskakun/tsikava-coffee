@@ -4,6 +4,7 @@ import type { DrinkCardProduct } from "@/components/menu/drink-card";
 import type { DrinkArtwork } from "@/components/menu/drink-illustration";
 import { MenuCatalog } from "@/features/menu/menu-catalog";
 import { createClient } from "@/lib/supabase/server";
+import { Reveal } from "@/components/motion/reveal";
 
 export const metadata: Metadata = {
   title: "Menu",
@@ -39,6 +40,9 @@ function isDrinkArtwork(
     "matcha",
     "mocha",
     "classic",
+    "berry",
+    "kupalle",
+    "birch",
   ].includes(value);
 }
 
@@ -128,7 +132,7 @@ export default async function MenuPage() {
           className="menu-glow menu-glow-blue"
         />
 
-        <div className="page-shell menu-hero-content">
+        <Reveal className="page-shell menu-hero-content">
           <p className="eyebrow">
             <Flower2 size={16} />
             Small menu, strong personality
@@ -142,11 +146,12 @@ export default async function MenuPage() {
             enough to love, different enough to
             remember.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       <section className="page-shell menu-section">
-        {products.length > 0 ? (
+        <Reveal>
+          {products.length > 0 ? (
           <MenuCatalog products={products} />
         ) : (
           <div className="empty-menu-message">
@@ -159,6 +164,7 @@ export default async function MenuPage() {
             </p>
           </div>
         )}
+        </Reveal>
       </section>
     </main>
   );
