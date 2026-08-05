@@ -7221,3 +7221,65 @@ body:has(.home-page) .hero-content {
     font-size: 0.7rem;
   }
 }
+
+/* About opens with the same continuous photo treatment as the home page. */
+body:has(.about-page) .site-header-stack {
+  position: absolute !important;
+  z-index: 20;
+  inset: 0 0 auto;
+  width: 100%;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body:has(.about-page) .site-header,
+body:has(.about-page) .site-header .site-nav {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+body:has(.about-page) .site-header .wordmark,
+body:has(.about-page) .site-header .wordmark-name,
+body:has(.about-page) .site-header .wordmark-bang,
+body:has(.about-page) .site-header .nav-links a,
+body:has(.about-page) .site-header .header-account-link,
+body:has(.about-page) .site-header .cart-button,
+body:has(.about-page) .site-header .menu-trigger {
+  color: var(--white);
+}
+
+body:has(.about-page) .site-header .wordmark-mark {
+  color: #f0cfa8;
+}
+
+body:has(.about-page) .site-header .cart-button {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body:has(.about-page) .site-header .cart-count {
+  background: #f0cfa8;
+  color: var(--espresso);
+}
+
+.about-page .about-hero {
+  min-height: 100svh;
+  padding-top: 148px;
+  border-bottom: 0;
+  background:
+    linear-gradient(90deg, rgba(45, 27, 21, 0.86) 0%, rgba(45, 27, 21, 0.58) 57%, rgba(45, 27, 21, 0.76) 100%),
+    url("/images/tsikava-cafe-interior.jpg") center / cover;
+}
+
+@media (max-width: 760px) {
+  body:has(.about-page) .site-header .cart-button,
+  body:has(.about-page) .site-header .menu-trigger {
+    color: #f0cfa8;
+  }
+
+  .about-page .about-hero {
+    padding-top: 150px;
+  }
+}
