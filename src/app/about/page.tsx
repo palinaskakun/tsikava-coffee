@@ -44,9 +44,7 @@ export default function AboutPage() {
   return (
     <main className="about-page page-main">
       <section className="about-hero">
-        <Flower2 aria-hidden="true" className="about-flower about-flower-hero" />
-        <Flower2 aria-hidden="true" className="about-flower about-flower-hero-small" />
-
+        
         <Reveal className="page-shell about-hero-grid">
           <div>
             <p className="eyebrow">Why TSIKAVA?</p>
