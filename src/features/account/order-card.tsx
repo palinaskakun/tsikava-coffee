@@ -39,6 +39,7 @@ function formatDate(value: string) {
     month: "short",
     day: "numeric",
     year: "numeric",
+    timeZone: "America/New_York",
   }).format(new Date(value));
 }
 
@@ -46,6 +47,7 @@ function formatTime(value: string) {
   return new Intl.DateTimeFormat("en-US", {
     hour: "numeric",
     minute: "2-digit",
+    timeZone: "America/New_York",
   }).format(new Date(value));
 }
 
@@ -83,7 +85,7 @@ export function OrderCard({ order }: OrderCardProps) {
             {order.pickup_time ? (
               <span>
                 <Clock3 size={15} />
-                Pickup {formatTime(order.pickup_time)}
+                Pickup {formatTime(order.pickup_time)} ET
               </span>
             ) : null}
           </div>

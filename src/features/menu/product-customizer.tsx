@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import {
   Check,
   Minus,
@@ -303,27 +304,33 @@ export function ProductCustomizer({
           </button>
         </div>
 
-        <button
-          className={
-            added
-              ? "primary-button customizer-add-button customizer-add-button-success"
-              : "primary-button customizer-add-button"
-          }
-          onClick={handleAdd}
-          type="button"
-        >
-          {added ? (
-            <>
-              <Check size={18} />
-              Added to cart
-            </>
-          ) : (
-            <>
-              <ShoppingBag size={18} />
-              Add {quantity} · {formatPrice(totalPrice)}
-            </>
-          )}
-        </button>
+        <div className="customizer-order-actions">
+          <button
+            className={
+              added
+                ? "primary-button customizer-add-button customizer-add-button-success"
+                : "primary-button customizer-add-button"
+            }
+            onClick={handleAdd}
+            type="button"
+          >
+            {added ? (
+              <>
+                <Check size={18} />
+                Added to cart
+              </>
+            ) : (
+              <>
+                <ShoppingBag size={18} />
+                Add {quantity} · {formatPrice(totalPrice)}
+              </>
+            )}
+          </button>
+
+          <Link className="customizer-cart-link" href="/cart">
+            Go to cart
+          </Link>
+        </div>
       </div>
             <div
         aria-live="polite"

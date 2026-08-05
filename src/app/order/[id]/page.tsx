@@ -57,6 +57,7 @@ function formatTime(value: string) {
   return new Intl.DateTimeFormat("en-US", {
     hour: "numeric",
     minute: "2-digit",
+    timeZone: "America/New_York",
   }).format(new Date(value));
 }
 
@@ -156,7 +157,7 @@ export default async function OrderConfirmationPage({
               <small>Pickup</small>
               <strong>
                 {order.pickup_time
-                  ? formatTime(order.pickup_time)
+                  ? `${formatTime(order.pickup_time)} ET`
                   : "Not selected"}
               </strong>
             </span>

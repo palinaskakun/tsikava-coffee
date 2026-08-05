@@ -1726,7 +1726,30 @@
 }
 
 .customizer-add-button {
+  width: 100%;
+}
+
+.customizer-order-actions {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 13px;
+}
+
+.customizer-cart-link {
+  align-self: center;
+  color: var(--espresso);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+}
+
+.customizer-cart-link:hover {
+  color: var(--oxblood);
 }
 
 @media (max-width: 680px) {
@@ -1748,6 +1771,10 @@
   }
 
   .customizer-add-button {
+    width: 100%;
+  }
+
+  .customizer-order-actions {
     width: 100%;
   }
 }
