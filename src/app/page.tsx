@@ -83,7 +83,7 @@ export default function HomePage() {
 
           <Reveal className="hero-photo" delay={1}>
             <Image alt="Iced coffees being prepared" fill priority sizes="(max-width: 1000px) 100vw, 44vw" src="/images/tsikava-iced-coffee.jpg" />
-            <div className="hero-photo-caption"><span>01</span> Made for your daily pause</div>
+            <div className="hero-photo-caption"> Made for your daily pause</div>
           </Reveal>
         </div>
       </section>
