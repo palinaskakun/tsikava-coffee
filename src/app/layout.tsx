@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { RouteBreadcrumb } from "@/components/layout/route-breadcrumb";
 import "./globals.css";
 
 const bodyFont = Poppins({
@@ -31,6 +32,7 @@ export default function RootLayout({
     >
       <body>
         <SiteHeader />
+        <RouteBreadcrumb />
         {children}
         <SiteFooter />
       </body>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Flower2 } from "lucide-react";
 import type { DrinkCardProduct } from "@/components/menu/drink-card";
 import type { DrinkArtwork } from "@/components/menu/drink-illustration";
 import { MenuCatalog } from "@/features/menu/menu-catalog";
@@ -133,10 +132,7 @@ export default async function MenuPage() {
         />
 
         <Reveal className="page-shell menu-hero-content">
-          <p className="eyebrow">
-            <Flower2 size={16} />
-            Small menu, strong personality
-          </p>
+          <p className="eyebrow">Small menu, strong personality</p>
 
           <h1>Pick something interesting.</h1>
 

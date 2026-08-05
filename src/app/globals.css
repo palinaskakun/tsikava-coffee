@@ -7283,3 +7283,55 @@ body:has(.about-page) .site-header .cart-count {
     padding-top: 150px;
   }
 }
+
+/* A light, consistent route trail appears on every page after Home. */
+.route-breadcrumb {
+  position: absolute;
+  z-index: 10;
+  top: 111px;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #f0cfa8;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.route-breadcrumb a {
+  color: inherit;
+  transition: color 180ms ease;
+}
+
+.route-breadcrumb a:hover {
+  color: var(--white);
+}
+
+.route-breadcrumb-part {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.route-breadcrumb [aria-current="page"] {
+  color: inherit;
+}
+
+.location-feature-reveal:nth-child(even) .location-feature-image {
+  order: 2;
+}
+
+@media (max-width: 760px) {
+  .route-breadcrumb {
+    top: 102px;
+    font-size: 0.7rem;
+  }
+
+  .location-feature-reveal:nth-child(even) .location-feature-image {
+    order: initial;
+  }
+}
